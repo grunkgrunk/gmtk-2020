@@ -1,9 +1,12 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Tut.gd" type="Script" id=1]
+[ext_resource path="res://tut.gd" type="Script" id=1]
 
-[node name="Tut" type="Node"]
+[node name="tut" type="Control"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Text" type="RichTextLabel" parent="."]
 margin_right = 501.0
