@@ -1,0 +1,25 @@
+[gd_scene format=2]
+
+[node name="start" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 427.0
+margin_top = 236.0
+margin_right = 591.0
+margin_bottom = 273.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 415.0
+margin_top = 151.0
+margin_right = 600.0
+margin_bottom = 165.0
+text = "Amazing entry for gmtk 2020"
