@@ -7,7 +7,7 @@ const MAX_FALL_SPEED = 1000
 
 #onready var anim_player = $AnimationPlayer
 onready var sprite = $Sprite
-export(bool )var playing = false
+export(bool)var playing = false
 var y_velo = 0
 var facing_right = false
 

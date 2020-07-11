@@ -11,7 +11,6 @@ func _ready():
 func _on_LineEdit_text_entered(txt):
 	emit_signal("line_edit", txt)
 
-
 func t(s):
 	$Text.text = s
 
@@ -42,7 +41,7 @@ func iloveyou():
 		var response = yield(self, "line_edit")
 		if response == "thank you":
 			break
-		t("Did you just call me a/an " + response + ". Say 'thank you'")
+		t("Did you just call me" + response + "?. Say 'thank you'")
 	
 	t("Ohh you are too sweet, no problem!")
 	yield(self, "enter_pressed")

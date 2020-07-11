@@ -1,5 +1,8 @@
 extends Control
 
+export(NodePath) var topdown_path
+onready var topdown = get_node(topdown_path)
+
 signal enter_pressed
 signal start_pressed
 signal play
@@ -20,8 +23,8 @@ func intro():
 	get_viewport().warp_mouse(Vector2(0,0))
 	yield(self, "start_pressed")
 	t("Nicely done! Without further ado let's get started!")
-	get_node("/root/world/topdown").visible = true
-	get_node("/root/world/ui").visible = false
+	topdown.show()
+	get_node("/root/world/ui_layer/ui").visible = false
 	t("'In the game you move around by shooting'")
 	yield(self,"enter_pressed")
 	t("'You have to clear 100 random levels of rising difficulty'")
@@ -32,10 +35,12 @@ func intro():
 	yield(self,"enter_pressed")
 	t("Let's go on an adventure instead!")
 	yield(self,"enter_pressed")
-	get_node("/root/world/topdown").visible = false
+	topdown.queue_free()
 	emit_signal("play")
+	queue_free()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#topdown.hide()
 	intro()
 
 func t(s):
