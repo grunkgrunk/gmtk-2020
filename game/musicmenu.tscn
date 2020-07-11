@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://tut/tut.tscn" type="PackedScene" id=2]
+[ext_resource path="res://tut/tutmusic.gd" type="Script" id=3]
+
+[node name="musicmenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tut" parent="." instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="nice1" type="AudioStreamPlayer" parent="tut"]
+
+[node name="nice2" type="AudioStreamPlayer" parent="tut"]
+
+[node name="nice3" type="AudioStreamPlayer" parent="tut"]
+
+[node name="techno" type="AudioStreamPlayer" parent="tut"]
+
+[node name="text" type="RichTextLabel" parent="tut"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 356.0
+margin_top = 240.0
+margin_right = 690.0
+margin_bottom = 368.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
