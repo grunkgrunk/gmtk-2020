@@ -21,7 +21,21 @@ func intro():
 	get_viewport().warp_mouse(Vector2(0,0))
 	yield(self, "start_pressed")
 	t("Nicely done! Without further ado let's get started!")
+	get_node("/root/world/topdown").visible = true
+	get_node("/root/world/ui").visible = false
+	t("'In the game you move around by shooting'")
+	yield(self,"enter_pressed")
+	t("'You have to clear 100 random levels of rising difficulty'")
+	yield(self,"enter_pressed")
+	t("Wait a minute. This sounds too damn generic.")
+	yield(self,"enter_pressed")
+	t("I know I am a tutorial-robot, but I can barely say this with a straight face")
+	yield(self,"enter_pressed")
+	t("Let's go on an adventure instead!")
+	yield(self,"enter_pressed")
+	get_node("/root/world/topdown").visible = false
 	emit_signal("play")
+	
 	
 # Called when the node enters the scene tree for the first time.
 func _ready():
