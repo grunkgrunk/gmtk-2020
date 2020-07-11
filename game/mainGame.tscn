@@ -51,7 +51,7 @@ texture = ExtResource( 8 )
 [node name="player" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
-position = Vector2( 2938.81, 523.412 )
+position = Vector2( 55.8654, 498.467 )
 script = ExtResource( 3 )
 playing = true
 
@@ -144,8 +144,8 @@ script = ExtResource( 16 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="break_area"]
 shape = SubResource( 8 )
 [connection signal="body_entered" from="jump_area" to="jump_area" method="_on_jump_area_body_entered"]
-[connection signal="first_jump" from="jump_area" to="layer/tut" method="_on_jump_area_first_jump"]
 [connection signal="first_jump" from="jump_area" to="." method="_on_jump_area_first_jump"]
+[connection signal="first_jump" from="jump_area" to="layer/tut" method="_on_jump_area_first_jump"]
 [connection signal="body_entered" from="doublejumparea" to="doublejumparea" method="_on_doublejumparea_body_entered"]
 [connection signal="doublejump" from="doublejumparea" to="layer/tut" method="_on_doublejumparea_doublejump"]
 [connection signal="body_entered" from="jumpfail_area" to="jumpfail_area" method="_on_jumpfail_area_body_entered"]

@@ -1,16 +1,40 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://tut/tut.gd" type="Script" id=1]
+[ext_resource path="res://tut.png" type="Texture" id=2]
+[ext_resource path="res://tuteye.png" type="Texture" id=3]
 
 [node name="tut" type="Control"]
+margin_left = -2070.77
+margin_top = -11.606
+margin_right = -2070.77
+margin_bottom = -11.606
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Text" type="RichTextLabel" parent="."]
-margin_right = 501.0
-margin_bottom = 281.0
+margin_left = 1981.74
+margin_top = -97.4302
+margin_right = 2482.74
+margin_bottom = 183.57
+text = "blabla
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="tuteye" type="Sprite" parent="."]
+position = Vector2( 2035.16, -32.9246 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="tut" type="Sprite" parent="."]
+position = Vector2( 2083.07, 14.5835 )
+texture = ExtResource( 2 )
+
+[node name="tuteye2" type="Sprite" parent="tut"]
+position = Vector2( -11.3766, -46.8782 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )

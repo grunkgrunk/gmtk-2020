@@ -12,6 +12,10 @@ script = ExtResource( 3 )
 [node name="ui_layer" type="CanvasLayer" parent="."]
 
 [node name="tut" parent="ui_layer" instance=ExtResource( 4 )]
+margin_left = -1299.94
+margin_top = 213.228
+margin_right = -1299.94
+margin_bottom = 213.228
 cursor_scn = ExtResource( 1 )
 
 [node name="ui" type="Control" parent="ui_layer"]
@@ -24,6 +28,6 @@ __meta__ = {
 [node name="start" parent="ui_layer/ui" instance=ExtResource( 2 )]
 
 [node name="mainGame" parent="." instance=ExtResource( 6 )]
-[connection signal="play" from="ui_layer/tut" to="." method="_on_tut_play"]
 [connection signal="play" from="ui_layer/tut" to="mainGame" method="_on_tut_play"]
+[connection signal="play" from="ui_layer/tut" to="." method="_on_tut_play"]
 [connection signal="start_pressed" from="ui_layer/ui/start" to="ui_layer/tut" method="_on_start_start_pressed"]
