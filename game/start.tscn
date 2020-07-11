@@ -26,4 +26,7 @@ margin_top = 151.0
 margin_right = 600.0
 margin_bottom = 165.0
 text = "Amazing entry for gmtk 2020"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

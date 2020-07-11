@@ -9,7 +9,6 @@ onready var lastpos = get_viewport().get_mouse_position()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	pass # Replace with function body.
 
 
@@ -18,7 +17,7 @@ func _physics_process(delta):
 	position = get_viewport().get_mouse_position()
 
 func left():
-	get_viewport().warp_mouse(Vector2(0,0))
+	pass
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_accept"):
