@@ -87,3 +87,37 @@ func _on_music_area_musicdialogue():
 	t("How about some music?")
 	yield(self, "enter_pressed")
 
+
+
+func _on_dangerjump_shouldsave():
+	mainGame.pause()
+	t("Yeah.. sorry to be the one to tell you, but you are not going to make this jump..")
+	yield(self, "enter_pressed")
+	t("You are going to fall into this bottomless pit.")
+	yield(self, "enter_pressed")
+	t("You are goin to fall for hours and days... until you hit the bottom... which is filled with spikes")
+	yield(self, "enter_pressed")
+	t("You will then be thrown back to the main menu. And have to start the game over.")
+	yield(self, "enter_pressed")
+	t("There is nothing you can do...")
+	yield(self, "enter_pressed")
+	mainGame.play()
+
+
+func _on_break_area_breakdialogue():
+	#mainGame.pause()
+	t("Are you drinking enough water?")
+	yield(self, "enter_pressed")
+	t("Let us take a break from playing!")
+	yield(self, "enter_pressed")
+	OS.set_window_maximized(true)
+	t("Woops that was the wrong button. I never understood how to operate "+str(OS.get_name()))
+	yield(self, "enter_pressed")
+	OS.set_window_minimized(true)
+	t("That was nice, right?")
+	yield(self, "enter_pressed")
+	t("I love you desktop-background!")
+	yield(self, "enter_pressed")
+	t("Anyways: Well rested the hero continued his travels to the right!")
+	#mainGame.play()
+	
