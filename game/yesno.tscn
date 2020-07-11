@@ -1,0 +1,43 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://yesno.gd" type="Script" id=1]
+
+[node name="yesno" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dialog" type="Control" parent="."]
+margin_left = 323.634
+margin_top = 193.282
+margin_right = 363.634
+margin_bottom = 233.282
+
+[node name="yes" type="Button" parent="dialog"]
+margin_left = 96.3258
+margin_top = 85.6229
+margin_right = 108.326
+margin_bottom = 105.623
+text = "Yes"
+
+[node name="no" type="Button" parent="dialog"]
+margin_left = 204.441
+margin_top = 85.71
+margin_right = 216.441
+margin_bottom = 105.71
+text = "No"
+
+[node name="Label" type="Label" parent="dialog"]
+margin_left = 128.036
+margin_top = 53.3988
+margin_right = 215.036
+margin_bottom = 67.3988
+text = "Are you sure?"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="tween" type="Tween" parent="."]
