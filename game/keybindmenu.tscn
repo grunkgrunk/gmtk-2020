@@ -12,6 +12,11 @@ __meta__ = {
 
 [node name="tut" parent="." instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+gridPath = NodePath("../grid")
+rebindPath = NodePath("../rebind")
+loadLabelPath = NodePath("../load")
+
+[node name="timer" type="Timer" parent="tut"]
 
 [node name="grid" type="GridContainer" parent="."]
 anchor_right = 1.0
@@ -117,13 +122,13 @@ margin_right = 128.0
 margin_bottom = 122.0
 text = "S"
 
-[node name="live_chat_bind2" type="Label" parent="grid"]
+[node name="keybind" type="Label" parent="grid"]
 margin_top = 126.0
 margin_right = 111.0
 margin_bottom = 140.0
 text = "Keybinding menu"
 
-[node name="live_chat_bind3" type="Label" parent="grid"]
+[node name="keybind_bind" type="Label" parent="grid"]
 margin_left = 115.0
 margin_top = 126.0
 margin_right = 128.0
@@ -131,9 +136,22 @@ margin_bottom = 140.0
 text = "K"
 
 [node name="rebind" type="Button" parent="."]
+visible = false
 margin_left = 419.801
 margin_top = 262.656
 margin_right = 494.801
 margin_bottom = 282.656
 text = "Rebind all"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="load" type="Label" parent="."]
+visible = false
+margin_left = 438.618
+margin_top = 52.9731
+margin_right = 478.618
+margin_bottom = 66.9731
+text = "Rebinding..."
+[connection signal="timeout" from="tut/timer" to="tut" method="_on_timer_timeout"]
 [connection signal="pressed" from="rebind" to="tut" method="_on_rebind_pressed"]

@@ -33,11 +33,6 @@ extents = Vector2( 127.523, 44.2639 )
 [node name="mainGame" type="Node2D"]
 script = ExtResource( 7 )
 
-[node name="blue" type="Sprite" parent="."]
-position = Vector2( 1006.54, 398.445 )
-scale = Vector2( 0.258718, 1.05381 )
-texture = ExtResource( 8 )
-
 [node name="player" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
