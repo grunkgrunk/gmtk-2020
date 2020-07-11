@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://mainGame.tres" type="TileSet" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -7,14 +7,28 @@
 [ext_resource path="res://tut/tut.tscn" type="PackedScene" id=5]
 [ext_resource path="res://tut/tut_maingame.gd" type="Script" id=6]
 [ext_resource path="res://mainGame.gd" type="Script" id=7]
+[ext_resource path="res://blue.png" type="Texture" id=8]
+[ext_resource path="res://doublejumparea.gd" type="Script" id=9]
+[ext_resource path="res://jumpfail_area.gd" type="Script" id=10]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 295.27, 17.3406 )
 
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 55.2339, 81.9485 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 75.9153, 41.032 )
+
 [node name="mainGame" type="Node2D"]
 script = ExtResource( 7 )
+
+[node name="blue" type="Sprite" parent="."]
+position = Vector2( 1006.54, 398.445 )
+scale = Vector2( 0.258718, 1.05381 )
+texture = ExtResource( 8 )
 
 [node name="player" type="KinematicBody2D" parent="." groups=[
 "player",
@@ -44,7 +58,7 @@ texture = ExtResource( 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 32, 32 )
 format = 1
-tile_data = PoolIntArray( 1048591, 7, 0, 1048592, 7, 0, 1114112, 6, 0, 1114113, 6, 0, 1114114, 6, 0, 1114115, 6, 0, 1114116, 6, 0, 1114117, 6, 0, 1114118, 6, 0, 1114119, 6, 0, 1114120, 6, 0, 1114121, 6, 0, 1114122, 6, 0, 1114123, 6, 0, 1114124, 6, 0, 1114125, 6, 0, 1114126, 6, 0, 1114127, 8, 0, 1114128, 8, 0, 1179648, 8, 0, 1179649, 8, 0, 1179650, 8, 0, 1179651, 8, 0, 1179652, 8, 0, 1179653, 8, 0, 1179654, 8, 0, 1179655, 8, 0, 1179656, 8, 0, 1179657, 8, 0, 1179658, 8, 0, 1179659, 8, 0, 1179660, 8, 0, 1179661, 8, 0, 1179662, 8, 0, 1179663, 8, 0, 1179664, 9, 0, 1245184, 8, 0, 1245185, 8, 0, 1245186, 8, 0, 1245187, 8, 0, 1245188, 8, 0, 1245189, 8, 0, 1245190, 8, 0, 1245191, 8, 0, 1245192, 8, 0, 1245193, 8, 0, 1245194, 8, 0, 1245195, 8, 0, 1245196, 8, 0, 1245197, 8, 0, 1245198, 8, 0, 1245199, 8, 0, 1245200, 9, 0 )
+tile_data = PoolIntArray( 655393, 1, 0, 655394, 1, 0, 720929, 10, 0, 720930, 10, 0, 786465, 10, 0, 786466, 10, 0, 852001, 10, 0, 852002, 10, 0, 917537, 10, 0, 917538, 10, 0, 983068, 1, 0, 983069, 1, 0, 983073, 10, 0, 983074, 10, 0, 1048591, 7, 0, 1048592, 7, 0, 1048604, 10, 0, 1048605, 10, 0, 1048609, 10, 0, 1048610, 10, 0, 1114112, 6, 0, 1114113, 6, 0, 1114114, 6, 0, 1114115, 6, 0, 1114116, 6, 0, 1114117, 6, 0, 1114118, 6, 0, 1114119, 6, 0, 1114120, 6, 0, 1114121, 6, 0, 1114122, 6, 0, 1114123, 6, 0, 1114124, 6, 0, 1114125, 6, 0, 1114126, 6, 0, 1114127, 8, 0, 1114128, 8, 0, 1114129, 0, 0, 1114130, 0, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 10, 0, 1114141, 10, 0, 1114145, 10, 0, 1114146, 10, 0, 1179648, 8, 0, 1179649, 8, 0, 1179650, 8, 0, 1179651, 8, 0, 1179652, 8, 0, 1179653, 8, 0, 1179654, 8, 0, 1179655, 8, 0, 1179656, 8, 0, 1179657, 8, 0, 1179658, 8, 0, 1179659, 8, 0, 1179660, 8, 0, 1179661, 8, 0, 1179662, 8, 0, 1179663, 8, 0, 1179664, 9, 0, 1179665, 10, 0, 1179666, 10, 0, 1179667, 10, 0, 1179668, 10, 0, 1179669, 10, 0, 1179670, 10, 0, 1179671, 10, 0, 1179672, 10, 0, 1179673, 10, 0, 1179674, 10, 0, 1179675, 10, 0, 1179676, 10, 0, 1179677, 10, 0, 1179681, 10, 0, 1179682, 10, 0, 1245184, 8, 0, 1245185, 8, 0, 1245186, 8, 0, 1245187, 8, 0, 1245188, 8, 0, 1245189, 8, 0, 1245190, 8, 0, 1245191, 8, 0, 1245192, 8, 0, 1245193, 8, 0, 1245194, 8, 0, 1245195, 8, 0, 1245196, 8, 0, 1245197, 8, 0, 1245198, 8, 0, 1245199, 8, 0, 1245200, 9, 0, 1245201, 10, 0, 1245202, 10, 0, 1245203, 10, 0, 1245204, 10, 0, 1245205, 10, 0, 1245206, 10, 0, 1245207, 10, 0, 1245208, 10, 0, 1245209, 10, 0, 1245210, 10, 0, 1245211, 10, 0, 1245212, 10, 0, 1245213, 10, 0, 1245217, 10, 0, 1245218, 10, 0, 1310737, 10, 0, 1310738, 10, 0, 1310739, 10, 0, 1310740, 10, 0, 1310741, 10, 0, 1310742, 10, 0, 1310743, 10, 0, 1310744, 10, 0, 1310745, 10, 0, 1310746, 10, 0, 1310747, 10, 0, 1310748, 10, 0, 1310749, 10, 0, 1310753, 10, 0, 1310754, 10, 0, 1376274, 10, 0, 1376275, 10, 0, 1376276, 10, 0, 1376277, 10, 0, 1376278, 10, 0, 1376279, 10, 0, 1376280, 10, 0, 1376281, 10, 0, 1376282, 10, 0, 1376283, 10, 0, 1376284, 10, 0, 1376285, 10, 0, 1376286, 10, 0, 1376287, 10, 0, 1376288, 10, 0, 1376289, 10, 0, 1376290, 10, 0 )
 
 [node name="jump_area" type="Area2D" parent="."]
 position = Vector2( 277.928, 451.397 )
@@ -57,6 +71,27 @@ shape = SubResource( 2 )
 
 [node name="tut" parent="layer" instance=ExtResource( 5 )]
 script = ExtResource( 6 )
+
+[node name="doublejumparea" type="Area2D" parent="."]
+position = Vector2( 874.027, 441.733 )
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="doublejumparea"]
+position = Vector2( 28.3162, 24.5407 )
+shape = SubResource( 3 )
+
+[node name="jumpfail_area" type="Area2D" parent="."]
+position = Vector2( 992.258, 625.627 )
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jumpfail_area"]
+position = Vector2( 16.9514, 50.8542 )
+shape = SubResource( 4 )
 mainGamePath = NodePath("../..")
 [connection signal="body_entered" from="jump_area" to="jump_area" method="_on_jump_area_body_entered"]
 [connection signal="first_jump" from="jump_area" to="layer/tut" method="_on_jump_area_first_jump"]
+[connection signal="first_jump" from="jump_area" to="." method="_on_jump_area_first_jump"]
+[connection signal="body_entered" from="doublejumparea" to="doublejumparea" method="_on_doublejumparea_body_entered"]
+[connection signal="doublejump" from="doublejumparea" to="layer/tut" method="_on_doublejumparea_doublejump"]
+[connection signal="body_entered" from="jumpfail_area" to="jumpfail_area" method="_on_jumpfail_area_body_entered"]
+[connection signal="jumpfail" from="jumpfail_area" to="layer/tut" method="_on_jumpfail_area_jumpfail"]
