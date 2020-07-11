@@ -2,6 +2,7 @@ extends Control
 
 signal enter_pressed
 signal right_pressed
+signal esc_pressed
 
 var i = 0
 
@@ -29,7 +30,10 @@ func _ready():
 	$techno.play()
 	$text.text = "Currently playing: 'T3chn0-B4ss by VodkaNostroviaComrade'"
 	t("Perfect! This is background music for heroic adventure")
-	yield(self, "right_pressed")
+	$cam.gocrazy()
+	yield(self, "enter_pressed")
+	("Now that you have chosen the music, you can press escape to return to the game")
+	yield(self, "esc_pressed")
 func t(s):
 	$Text.text = s
 
@@ -38,4 +42,6 @@ func _input(event):
 		emit_signal("enter_pressed")
 	if(event.is_action_pressed("ui_right")):
 		emit_signal("right_pressed")
+	if(event.is_action_pressed("ui_cancel")):
+		emit_signal("esc_pressed")
 		
