@@ -9,3 +9,4 @@ func play():
 
 func pause():
 	$player.playing = false
+

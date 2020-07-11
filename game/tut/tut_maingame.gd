@@ -253,4 +253,23 @@ func _on_spikes_body_entered(body):
 	get_parent().add_child(o)
 	yield(o.get_node("tut"), "iloveyouwasajoke")
 	mainGame.play()
+
+func _on_health_almost_dead():
+	show()
+	mainGame.pause()
+	for a in get_tree().get_nodes_in_group("pause"):
+		a.pause()
+	t("Hey! Why are you not fighting back?")
+	yield(self, "enter_pressed")
+	t("...")
+	yield(self, "enter_pressed")
+	t("Oh, I think I might have forgot to tell you how to fight...")
+	yield(self, "enter_pressed")
+	t("Firstly, you'll need a mouse")
+	var c = cursor_scn.instance()
+	mainGame.add_child(c)
+	yield(self, "enter_pressed")
+	t("Just poke the dragon in the eye")
+	yield(c, "win")
+	t("Yaay, you win")
 	

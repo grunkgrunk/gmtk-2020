@@ -2,17 +2,22 @@ extends AnimatedSprite
 
 var is_mouth_open = false
 var n_fireballs = 13
-
 export(PackedScene) var fireball_scene
+var paused = false
 
-func _ready():
-	$animation.play("intro")
-
+func pause():
+	paused = true
+	$animation.stop(false)
+func resume():
+	paused = false
+	$animation.play()
 
 func fire_balls():
 	$shoot_timer.start()
 
 func _on_shoot_timer_timeout():
+	if paused:
+		return
 	var o = fireball_scene.instance()
 	get_parent().add_child(o)
 	o.global_position = $pos.global_position
@@ -21,11 +26,6 @@ func _on_shoot_timer_timeout():
 	if n_fireballs == 0:
 		$shoot_timer.stop()
 		n_fireballs = 13
-
-func _input(event):
-	if(Input.is_action_just_pressed("continue")):
-		$animation.play("fire")
-
 
 func _on_animation_animation_finished(anim_name):
 	if anim_name == "intro":
@@ -40,3 +40,4 @@ func _on_animation_animation_finished(anim_name):
 func _on_idle_timer_timeout():
 	$animation.play("fire")
 	
+

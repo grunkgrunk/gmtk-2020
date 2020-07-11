@@ -1,11 +1,13 @@
 extends KinematicBody2D
 
+signal took_damage
 const MOVE_SPEED = 300
 const JUMP_FORCE = 600
 const GRAVITY = 50
 const MAX_FALL_SPEED = 1000
 
 var invert = 1
+
 
 #onready var anim_player = $AnimationPlayer
 onready var sprite = $Sprite
@@ -64,3 +66,8 @@ func flip():
 	#if anim_player.is_playing() and anim_player.current_animation == anim_name:
 #		return
 #anim_player.play(anim_name)
+
+
+func _on_djump_area_area_entered(area):
+	if area.owner.is_in_group("fireball"):
+		emit_signal("took_damage")

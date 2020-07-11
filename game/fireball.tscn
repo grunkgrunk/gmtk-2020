@@ -23,9 +23,11 @@ animations = [ {
 
 [node name="fireball" type="AnimatedSprite" groups=[
 "fireball",
+"pause",
 ]]
 scale = Vector2( 2, 2 )
 frames = SubResource( 3 )
+frame = 1
 playing = true
 script = ExtResource( 2 )
 

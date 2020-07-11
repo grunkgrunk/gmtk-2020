@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://dragon.png" type="Texture" id=1]
 [ext_resource path="res://dragon.gd" type="Script" id=2]
@@ -69,14 +69,18 @@ tracks/2/keys = {
 "times": PoolRealArray( 1.2 )
 }
 
+[sub_resource type="CircleShape2D" id=6]
+radius = 159.752
+
 [node name="bossfight" type="Node2D"]
 
-[node name="dragon" type="AnimatedSprite" parent="."]
+[node name="dragon" type="AnimatedSprite" parent="." groups=[
+"pause",
+]]
 material = SubResource( 1 )
-position = Vector2( 1351.26, 220.294 )
+position = Vector2( 849.12, 235.396 )
 rotation = -0.673477
 frames = SubResource( 4 )
-frame = 1
 script = ExtResource( 2 )
 fireball_scene = ExtResource( 3 )
 
@@ -98,6 +102,17 @@ stream = ExtResource( 6 )
 [node name="idle_timer" type="Timer" parent="dragon"]
 wait_time = 2.0
 one_shot = true
+
+[node name="eye" type="Area2D" parent="dragon" groups=[
+"eye",
+]]
+position = Vector2( -121.493, 7.96222 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dragon/eye"]
+shape = SubResource( 6 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 775.864, 336.019 )
 [connection signal="timeout" from="dragon/shoot_timer" to="dragon" method="_on_shoot_timer_timeout"]
 [connection signal="animation_finished" from="dragon/animation" to="dragon" method="_on_animation_animation_finished"]
 [connection signal="timeout" from="dragon/idle_timer" to="dragon" method="_on_idle_timer_timeout"]
