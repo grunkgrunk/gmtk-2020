@@ -12,17 +12,24 @@ func _ready():
 	t("Press the right arrow key to jump to the next track")
 	yield(self, "right_pressed")
 	$text.text = "Currently playing: 'Movement no. 271 in D-minor (the saddest key) by Bruder Johannes Sebastian Emanuel-Mattias'"
+	$nice1.play()
 	t("Hmm this is nice. But slightly too baroque-esque for my delicate palette.")
 	yield(self, "right_pressed")
 	$text.text = "Currently playing: 'Take 4 by the Bave Drubeck Quartet'"
+	$nice1.stop()
+	$nice2.play()
 	t("Oh I like this track, but I am maybe in the mood for something less jazzy right now.")
 	yield(self, "right_pressed")
-	$text.text = "Currently playing: 'Aquatic Ambulance by Cing Cong Contry'"
+	$text.text = "Currently playing: 'Dundun dundun dundun by Underground'"
+	$nice2.stop()
+	$nice3.play()
 	t("This is an old classic, but we should be saving this track for the water level.")
 	yield(self, "right_pressed")
-	$text.text = "Currently playing: 'Movement no. 271 in D-minor (the saddest key) by Bruder Johannes Sebastian Emanuel-Mattias'"
+	$nice3.stop()
+	$techno.play()
+	$text.text = "Currently playing: 'T3chn0-B4ss by VodkaNostroviaComrade'"
 	t("Perfect! This is background music for heroic adventure")
-
+	yield(self, "right_pressed")
 func t(s):
 	$Text.text = s
 
