@@ -22,7 +22,7 @@ func intro():
 	yield(self, "start_pressed")
 	t("Nicely done! Without further ado let's get started!")
 	emit_signal("play")
-	
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	intro()
