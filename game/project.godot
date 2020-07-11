@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="gmtk-2020"
-run/main_scene="res://world.tscn"
+run/main_scene="res://cursor.tscn"
 config/icon="res://icon.png"
 
 [rendering]
