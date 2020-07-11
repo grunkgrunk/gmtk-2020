@@ -121,3 +121,4 @@ shape = SubResource( 6 )
 [connection signal="body_entered" from="donejump_area" to="donejump_area" method="_on_donejump_area_body_entered"]
 [connection signal="donejump" from="donejump_area" to="layer/tut" method="_on_donejump_area_donejump"]
 [connection signal="body_entered" from="music_area" to="music_area" method="_on_music_area_body_entered"]
+[connection signal="musicdialogue" from="music_area" to="layer/tut" method="_on_music_area_musicdialogue"]

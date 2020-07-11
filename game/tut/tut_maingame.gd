@@ -72,3 +72,18 @@ func _on_donejump_area_donejump():
 	yield(self, "enter_pressed")
 	t("'To continue moving to the right, press the 'move right'-button!'")
 	mainGame.play()
+
+
+func _on_music_area_musicdialogue():
+	mainGame.pause()
+	t("Hmmm... you don't talk much, do you?")
+	yield(self, "enter_pressed")
+	t("You just keep on pressing enter.")
+	yield(self, "enter_pressed")
+	t("That is exactly what I am talking about!")
+	yield(self, "enter_pressed")
+	t("I am getting kinda bored, to be honest.")
+	yield(self, "enter_pressed")
+	t("How about some music?")
+	yield(self, "enter_pressed")
+
