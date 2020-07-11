@@ -1,0 +1,105 @@
+[gd_scene format=2]
+
+[node name="keybindmenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="GridContainer"]
+margin_right = 89.0
+margin_bottom = 14.0
+text = "Jump"
+
+[node name="Label7" type="Label" parent="GridContainer"]
+margin_left = 93.0
+margin_right = 106.0
+margin_bottom = 14.0
+text = "W"
+
+[node name="Label" type="Label" parent="GridContainer"]
+margin_top = 18.0
+margin_right = 89.0
+margin_bottom = 32.0
+text = "Move left"
+
+[node name="Label2" type="Label" parent="GridContainer"]
+margin_left = 93.0
+margin_top = 18.0
+margin_right = 106.0
+margin_bottom = 32.0
+text = "A"
+
+[node name="Label3" type="Label" parent="GridContainer"]
+margin_top = 36.0
+margin_right = 89.0
+margin_bottom = 50.0
+text = "Move right"
+
+[node name="Label4" type="Label" parent="GridContainer"]
+margin_left = 93.0
+margin_top = 36.0
+margin_right = 106.0
+margin_bottom = 50.0
+text = "D"
+
+[node name="Label6" type="Label" parent="GridContainer"]
+margin_top = 54.0
+margin_right = 89.0
+margin_bottom = 68.0
+text = "Double jump"
+
+[node name="Label8" type="Label" parent="GridContainer"]
+margin_left = 93.0
+margin_top = 54.0
+margin_right = 106.0
+margin_bottom = 68.0
+text = "Ã"
+
+[node name="label9" type="Label" parent="GridContainer"]
+margin_top = 72.0
+margin_right = 89.0
+margin_bottom = 86.0
+text = "Enter Mech"
+
+[node name="Label10" type="Label" parent="GridContainer"]
+margin_left = 93.0
+margin_top = 72.0
+margin_right = 106.0
+margin_bottom = 86.0
+text = "O"
+
+[node name="Label11" type="Label" parent="GridContainer"]
+margin_top = 90.0
+margin_right = 89.0
+margin_bottom = 104.0
+text = "Crafting menu"
+
+[node name="Label12" type="Label" parent="GridContainer"]
+margin_left = 93.0
+margin_top = 90.0
+margin_right = 106.0
+margin_bottom = 104.0
+text = "C"
+
+[node name="Label13" type="Label" parent="GridContainer"]
+margin_top = 108.0
+margin_right = 89.0
+margin_bottom = 122.0
+text = "open chat"
+
+[node name="Label14" type="Label" parent="GridContainer"]
+margin_left = 93.0
+margin_top = 108.0
+margin_right = 106.0
+margin_bottom = 122.0
+text = "S"
