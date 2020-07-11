@@ -15,6 +15,8 @@ export(NodePath) var player
 export(NodePath) var bluePath
 export(PackedScene) var musicscn
 export(PackedScene) var yesno
+export(PackedScene) var iloveyou
+export(PackedScene) var cursor_scn
 
 onready var mainGame = get_node(mainGamePath)
 var musicjoke = null
@@ -117,6 +119,9 @@ func _on_jumpfail_area_jumpfail():
 		hide()
 		get_parent().add_child(keybind)
 		yield(keybind.get_node("tut"), "donebinding")
+		get_node(player).invert = -1
+		
+		
 		#Hop til keybind menu
 		keybind.queue_free()
 		mainGame.play()
@@ -172,6 +177,8 @@ func _on_music_area_musicdialogue():
 
 
 func _on_dangerjump_shouldsave():
+	show()
+	print("that worked ")
 	mainGame.pause()
 	t("Yeah.. sorry to be the one to tell you, but you are not going to make this jump..")
 	yield(self, "enter_pressed")
@@ -184,6 +191,7 @@ func _on_dangerjump_shouldsave():
 	t("There is nothing you can do...")
 	yield(self, "enter_pressed")
 	mainGame.play()
+	hide()
 
 
 func _on_break_area_breakdialogue():
@@ -193,9 +201,10 @@ func _on_break_area_breakdialogue():
 	yield(self, "enter_pressed")
 	t("Let us take a break from playing!")
 	yield(self, "enter_pressed")
-	OS.set_window_maximized(true)
+	OS.window_fullscreen = true
 	t("Woops that was the wrong button. I never understood how to operate "+str(OS.get_name()))
 	yield(self, "enter_pressed")
+	OS.window_fullscreen = false
 	OS.set_window_minimized(true)
 	t("That was nice, right?")
 	yield(self, "enter_pressed")
@@ -214,11 +223,15 @@ func _on_turnoffmusic_area_body_entered(body):
 	if not body.is_in_group("player"):
 		return
 	mainGame.pause()
+	var c = cursor_scn.instance()
 	var o = yesno.instance()
 	get_parent().add_child(o)
+	get_parent().add_child(c)
 	yield(o, "jump_around_done")
+	c.queue_free()
 	o.queue_free()
-	musicjoke.queue_free()
+	if musicjoke:
+		musicjoke.queue_free()
 	show()
 	t("Hey dude! I was enjoying the music!")
 	yield(self, "enter_pressed")
@@ -230,4 +243,14 @@ func _on_turnoffmusic_area_body_entered(body):
 	yield(self, "enter_pressed")
 	mainGame.play()
 	hide()
+
+func _on_spikes_body_entered(body):
+	if not body.is_in_group("player"):
+		return
+	var o = iloveyou.instance()
+	mainGame.pause()
+	hide()
+	get_parent().add_child(o)
+	yield(o.get_node("tut"), "iloveyouwasajoke")
+	mainGame.play()
 	

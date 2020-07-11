@@ -9,6 +9,7 @@ signal donebinding
 export(NodePath) var gridPath
 export(NodePath) var rebindPath
 export(NodePath) var loadLabelPath
+export(PackedScene) var cursorscn
 
 onready var grid = get_node(gridPath)
 
@@ -34,8 +35,12 @@ func _ready():
 	t("ÃÃÃÃÃÃÃÃh of course you couldn't jump, double jump was bound to the wrong key...")
 	yield(self, "enter_pressed")
 	t("See this rebind all button? You can click the button to rebind all keys")
+	var c = cursorscn.instance()
+	get_parent().add_child(c)
+	c.global_position = get_viewport().get_mouse_position()
 	get_node(rebindPath).show()
 	yield(self, "rebind_pressed")
+	c.queue_free()
 	get_node(rebindPath).hide()
 	get_node(loadLabelPath).show()
 	rebinding = true

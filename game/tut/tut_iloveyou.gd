@@ -2,6 +2,7 @@ extends Control
 signal enter_pressed
 signal start_pressed
 signal line_edit
+signal iloveyouwasajoke
 
 export(NodePath) var dialog_path
 # Called when the node enters the scene tree for the first time.
@@ -61,6 +62,6 @@ func iloveyou():
 	t("I never loved you, it was a joke")
 	yield(self, "enter_pressed")
 	t("Anyways, the only reason I saved you is because I don't want to teach everything about the game again.")
-
+	emit_signal("iloveyouwasajoke")
 
 	
