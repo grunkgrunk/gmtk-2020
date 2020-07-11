@@ -4,11 +4,8 @@ func _ready():
 	#hide()
 	#$player.playing = false
 	pass
-func _on_tut_play():
+func play():
 	$player.playing = true
 
-func _on_tut_pause():
+func pause():
 	$player.playing = false
-
-func _on_jump_area_first_jump():
-	_on_tut_pause()

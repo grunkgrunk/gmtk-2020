@@ -87,6 +87,7 @@ script = ExtResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jumpfail_area"]
 position = Vector2( 16.9514, 50.8542 )
 shape = SubResource( 4 )
+mainGamePath = NodePath("../..")
 [connection signal="body_entered" from="jump_area" to="jump_area" method="_on_jump_area_body_entered"]
 [connection signal="first_jump" from="jump_area" to="layer/tut" method="_on_jump_area_first_jump"]
 [connection signal="first_jump" from="jump_area" to="." method="_on_jump_area_first_jump"]
