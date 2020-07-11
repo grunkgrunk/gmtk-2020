@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://tut/tut.gd" type="Script" id=1]
 [ext_resource path="res://tut.png" type="Texture" id=2]
 [ext_resource path="res://tuteye.png" type="Texture" id=3]
+[ext_resource path="res://blue.png" type="Texture" id=4]
 
 [node name="tut" type="Control"]
 margin_left = -2070.77
@@ -14,11 +15,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="blue" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 1921.13, -9.62108 )
+scale = Vector2( 0.76, 0.709678 )
+texture = ExtResource( 4 )
+
 [node name="Text" type="RichTextLabel" parent="."]
-margin_left = 1981.74
-margin_top = -97.4302
-margin_right = 2482.74
-margin_bottom = 183.57
+margin_left = 1838.0
+margin_top = -66.0
+margin_right = 2013.0
+margin_bottom = 35.0
 text = "blabla
 "
 __meta__ = {

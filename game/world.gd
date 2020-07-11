@@ -6,12 +6,10 @@ export(bool) var paused = false
 # var b = "text"
 var pos = Vector2()
 func _ready():
-	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	$mainGame.pause()
-	$mainGame.hide()
-
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	pass
 func _on_tut_play():
 	$ui_layer/ui.hide()
-	$mainGame.show()
+	#$mainGame.show()
 
 	

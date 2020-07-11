@@ -4,6 +4,7 @@ signal enter_pressed
 signal rebind_pressed
 signal correct_key_bound
 signal timeout
+signal donebinding
 
 export(NodePath) var gridPath
 export(NodePath) var rebindPath
@@ -58,6 +59,8 @@ func _ready():
 	yield(self, "enter_pressed")
 	t("Thank you for being so understanding (You know what to do (Press enter))")
 	yield(self, "enter_pressed")
+	emit_signal("donebinding")
+	
 	
 
 
@@ -69,7 +72,6 @@ func _input(event):
 		emit_signal("enter_pressed")
 	if event is InputEventKey and rebinding and cur_key_idx < len(correct_keys) and not event.is_echo():
 		if char(event.scancode) == correct_keys[cur_key_idx].newkey:
-			print("kjh")
 			emit_signal("correct_key_bound")
 			cur_key_idx += 1
 
