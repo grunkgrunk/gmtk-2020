@@ -11,3 +11,5 @@ func _ready():
 func _on_tut_play():
 	$ui_layer/ui.hide()
 	$mainGame.show()
+
+	
