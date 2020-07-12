@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tut/tut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tut/tut_keybind.gd" type="Script" id=2]
 [ext_resource path="res://cursor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://tut/dialog.png" type="Texture" id=4]
+[ext_resource path="res://blackround.tscn" type="PackedScene" id=5]
 
 [node name="keybindmenu" type="Control"]
 anchor_right = 1.0
@@ -11,11 +13,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="blackround" parent="." instance=ExtResource( 5 )]
+position = Vector2( 493.158, 318.14 )
+
+[node name="dialog" type="Sprite" parent="."]
+position = Vector2( 503.837, 284.769 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 4 )
+
 [node name="tut" parent="." instance=ExtResource( 1 )]
-margin_left = -1773.09
-margin_top = 165.823
-margin_right = -1773.09
-margin_bottom = 165.823
+margin_left = -1777.09
+margin_top = 243.244
+margin_right = -1777.09
+margin_bottom = 243.244
 script = ExtResource( 2 )
 gridPath = NodePath("../grid")
 rebindPath = NodePath("../rebind")
@@ -27,21 +37,23 @@ cursorscn = ExtResource( 3 )
 [node name="grid" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 402.946
-margin_top = 100.051
-margin_right = 402.946
-margin_bottom = 100.051
+margin_left = 434.982
+margin_top = 198.829
+margin_right = 434.982
+margin_bottom = 198.829
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="jump" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_right = 111.0
 margin_bottom = 14.0
 text = "Jump"
 
 [node name="jump_bind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 115.0
 margin_right = 128.0
 margin_bottom = 14.0
@@ -51,12 +63,14 @@ __meta__ = {
 }
 
 [node name="left" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_top = 18.0
 margin_right = 111.0
 margin_bottom = 32.0
 text = "Move left"
 
 [node name="left_bind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 115.0
 margin_top = 18.0
 margin_right = 128.0
@@ -64,12 +78,14 @@ margin_bottom = 32.0
 text = "A"
 
 [node name="right" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_top = 36.0
 margin_right = 111.0
 margin_bottom = 50.0
 text = "Move right"
 
 [node name="right_bind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 115.0
 margin_top = 36.0
 margin_right = 128.0
@@ -77,12 +93,14 @@ margin_bottom = 50.0
 text = "D"
 
 [node name="djump" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_top = 54.0
 margin_right = 111.0
 margin_bottom = 68.0
 text = "Double jump"
 
 [node name="djump_bind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 115.0
 margin_top = 54.0
 margin_right = 128.0
@@ -90,12 +108,14 @@ margin_bottom = 68.0
 text = "Ã"
 
 [node name="enter_mech" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_top = 72.0
 margin_right = 111.0
 margin_bottom = 86.0
 text = "Enter Mech"
 
 [node name="enter_mech_bind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 115.0
 margin_top = 72.0
 margin_right = 128.0
@@ -103,12 +123,14 @@ margin_bottom = 86.0
 text = "O"
 
 [node name="crafting" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_top = 90.0
 margin_right = 111.0
 margin_bottom = 104.0
 text = "Crafting menu"
 
 [node name="crafting_bind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 115.0
 margin_top = 90.0
 margin_right = 128.0
@@ -116,12 +138,14 @@ margin_bottom = 104.0
 text = "C"
 
 [node name="live_chat" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_top = 108.0
 margin_right = 111.0
 margin_bottom = 122.0
 text = "Open live chat"
 
 [node name="live_chat_bind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 115.0
 margin_top = 108.0
 margin_right = 128.0
@@ -129,12 +153,14 @@ margin_bottom = 122.0
 text = "S"
 
 [node name="keybind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_top = 126.0
 margin_right = 111.0
 margin_bottom = 140.0
 text = "Keybinding menu"
 
 [node name="keybind_bind" type="Label" parent="grid"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 115.0
 margin_top = 126.0
 margin_right = 128.0
@@ -159,5 +185,4 @@ margin_top = 52.9731
 margin_right = 478.618
 margin_bottom = 66.9731
 text = "Rebinding..."
-[connection signal="timeout" from="tut/timer" to="tut" method="_on_timer_timeout"]
 [connection signal="pressed" from="rebind" to="tut" method="_on_rebind_pressed"]

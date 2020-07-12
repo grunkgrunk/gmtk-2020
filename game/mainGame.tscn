@@ -94,7 +94,7 @@ shape = SubResource( 1 )
 [node name="player" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
-position = Vector2( 6070.61, 2041.17 )
+position = Vector2( 2027.64, 514.016 )
 script = ExtResource( 3 )
 playing = true
 
@@ -255,7 +255,6 @@ healthPath = NodePath("../layer/health")
 [connection signal="body_entered" from="jump_area" to="jump_area" method="_on_jump_area_body_entered"]
 [connection signal="first_jump" from="jump_area" to="layer/tut" method="_on_jump_area_first_jump"]
 [connection signal="first_jump" from="jump_area" to="." method="_on_jump_area_first_jump"]
-[connection signal="timeout" from="layer/tut/timer" to="layer/tut" method="_on_timer_timeout"]
 [connection signal="almost_dead" from="layer/health" to="layer/tut" method="_on_health_almost_dead"]
 [connection signal="body_entered" from="doublejumparea" to="doublejumparea" method="_on_doublejumparea_body_entered"]
 [connection signal="doublejump" from="doublejumparea" to="layer/tut" method="_on_doublejumparea_doublejump"]
@@ -272,5 +271,5 @@ healthPath = NodePath("../layer/health")
 [connection signal="body_entered" from="turnoffmusic_area" to="layer/tut" method="_on_turnoffmusic_area_body_entered"]
 [connection signal="body_entered" from="spikes" to="layer/tut" method="_on_spikes_body_entered"]
 [connection signal="body_entered" from="spikes" to="spikes" method="_on_spikes_body_entered"]
-[connection signal="body_entered" from="dragon_area" to="dragon_area" method="_on_dragon_area_body_entered"]
 [connection signal="body_entered" from="dragon_area" to="bossfight" method="_on_dragon_area_body_entered"]
+[connection signal="body_entered" from="dragon_area" to="dragon_area" method="_on_dragon_area_body_entered"]

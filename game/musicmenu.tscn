@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tut/underworld.wav" type="AudioStream" id=1]
 [ext_resource path="res://tut/tut.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://tut/take5.wav" type="AudioStream" id=4]
 [ext_resource path="res://tut/baroque.wav" type="AudioStream" id=5]
 [ext_resource path="res://tut/techno.wav" type="AudioStream" id=6]
+[ext_resource path="res://tut/dialog.png" type="Texture" id=7]
+[ext_resource path="res://blackround.tscn" type="PackedScene" id=8]
 
 [node name="musicmenu" type="Control"]
 anchor_right = 1.0
@@ -14,11 +16,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="blackround" parent="." instance=ExtResource( 8 )]
+
+[node name="dialog" type="Sprite" parent="."]
+position = Vector2( 505.795, 310.366 )
+scale = Vector2( 0.8, 0.4 )
+texture = ExtResource( 7 )
+
 [node name="tut" parent="." instance=ExtResource( 2 )]
-margin_left = -1094.77
-margin_top = 402.394
-margin_right = -1094.77
-margin_bottom = 402.394
+margin_left = -1106.54
+margin_top = 94.6262
+margin_right = -1106.54
+margin_bottom = 94.6262
 script = ExtResource( 3 )
 
 [node name="nice1" type="AudioStreamPlayer" parent="tut"]
@@ -34,14 +43,15 @@ stream = ExtResource( 1 )
 stream = ExtResource( 6 )
 
 [node name="text" type="RichTextLabel" parent="tut"]
+modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 1440.32
-margin_top = -178.682
-margin_right = 1774.32
-margin_bottom = -50.682
+margin_left = 1450.41
+margin_top = 132.449
+margin_right = 1784.41
+margin_bottom = 260.449
 __meta__ = {
 "_edit_use_anchors_": false
 }
