@@ -5,6 +5,7 @@ extends ProgressBar
 # var a = 2
 # var b = "text"
 
+
 signal almost_dead
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +19,10 @@ func _ready():
 
 func _on_player_took_damage():
 	value -= rand_range(1, 20)
+	var cs = get_tree().get_nodes_in_group("Camera")
+	if(len(cs)==1):
+		cs[0].shake(0.2, 15, 10)
 	if value <= 0:
 		value = 1
 		emit_signal("almost_dead") 
+		

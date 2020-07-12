@@ -5,16 +5,18 @@ signal right_pressed
 signal esc_pressed
 signal musicjokedone
 
+var bass = false
 var donetalking = true
 var i = 0
 
+onready var cs = get_tree().get_nodes_in_group("Camera")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	t("Let us find some nice, relaxing background music.")
 	yield(self, "enter_pressed")
 	$text.text = "Currently playing: 'Movement no. 271 in D-minor (the saddest key)' by Bruder Johannes Sebastian Emanuel-Mattias"
 	$nice1.play()
-	t("Hmm this is nice. But slightly too baroque-esque for my delicate palette. Press right arrow key to jump to the next track")
+	t("Hmm this is nice. But slightly too baroque-esque for my delicate palette. Move right to jump to the next track")
 	yield(self, "right_pressed")
 	$text.text = "Currently playing: 'Take 4' by the Bave Drubeck Quartet"
 	$nice1.stop()
@@ -28,6 +30,7 @@ func _ready():
 	yield(self, "right_pressed")
 	$nice3.stop()
 	$techno.play()
+	bass = true
 	$text.text = "Currently playing: 'T3chn0-B4ss' by VodkaNostroviaComrade"
 	t("Perfect! This is background music for a heroic adventure")
 	yield(self, "enter_pressed")
@@ -35,6 +38,7 @@ func _ready():
 	yield(self, "esc_pressed")
 	emit_signal("musicjokedone")
 	
+
 func t(s,t = 0.03):
 	donetalking = false
 	$Text.visible_characters = 0

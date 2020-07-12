@@ -5,10 +5,15 @@ var radius = 50
 var count = 0
 export(NodePath) var target
 onready var tgt = get_node(target)
+onready var cs = get_tree().get_nodes_in_group("Camera")
+
+
 func _ready():
 	$yes.connect("button_down", self, "_on_no_button_down")
 
 func _on_no_button_down():
+	if(len(cs)==1):
+		cs[0].shake(2, 15, 12)
 	if count < 4:
 		$tween.interpolate_property(self, "global_position", global_position, rndbox(), 0.2, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		$tween.start()

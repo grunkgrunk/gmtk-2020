@@ -68,6 +68,20 @@ tracks/2/keys = {
 } ],
 "times": PoolRealArray( 1.2 )
 }
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "shake"
+} ]
+}
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 159.752
@@ -78,7 +92,7 @@ radius = 159.752
 "pause",
 ]]
 material = SubResource( 1 )
-position = Vector2( 849.12, 235.396 )
+position = Vector2( 1351.26, 220.294 )
 rotation = -0.673477
 frames = SubResource( 4 )
 script = ExtResource( 2 )

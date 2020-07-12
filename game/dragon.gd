@@ -40,4 +40,9 @@ func _on_animation_animation_finished(anim_name):
 func _on_idle_timer_timeout():
 	$animation.play("fire")
 	
+func shake():
+	var cs = get_tree().get_nodes_in_group("Camera")
+	if(len(cs)==1):
+		cs[0].shake(1, 15, 12)
+	
 
