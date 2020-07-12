@@ -10,6 +10,10 @@ var i = 0
 export(PackedScene) var cursor_scn
 onready var startpos = $tut.position
 var c = 0
+var maxlook = 15
+onready var eyes = ["tuteye","tuteye2"]
+var donetalking = true
+
 
 func intro():
 	yield(self, "enter_pressed")
@@ -62,15 +66,22 @@ func _ready():
 	intro()
 
 func t(s,t = 0.05):
+	donetalking = false
 	$Text.visible_characters = 0
 	$Text.text = s
 	for i in range(len(s)):
+		if(randf()>0.3):
+			$talk.pitch_scale = rand_range(0.8,1.2)
+			$talk.play()
 		$timer.start(t)
 		$Text.visible_characters += 1
 		yield($timer,"timeout")
+	$talk.stop()
+	donetalking = true
+
 
 func _input(event):
-	if(event.is_action_pressed("continue")):
+	if(event.is_action_pressed("continue") and donetalking):
 		emit_signal("enter_pressed")
 		if G.debug:
 			emit_signal("start_pressed")
@@ -83,4 +94,20 @@ func _on_start_start_pressed():
 func _process(delta):
 	c += delta
 	$tut.position = startpos + Vector2(0,sin(c*2)*3)
+	
+	var c = get_tree().get_nodes_in_group("cursor")
+	var r = randf() > 0.993
+	for estr in eyes:
+		var e = get_node(estr)
+		var tween = e.get_node("tween")
+		if r:
+			tween.interpolate_property(e,"scale",Vector2(1,1),Vector2(1,0),0.1)
+			tween.start()
+			yield(tween,"tween_completed")
+			tween.interpolate_property(e,"scale",Vector2(1,0),Vector2(1,1),0.1)
+			tween.start()
+		if len(c) > 0:
+			var d = e.get_node("tuteyeblack").global_position - c[0].global_position
+			d = -d/d.length()
+			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
 	

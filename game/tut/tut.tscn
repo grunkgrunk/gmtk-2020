@@ -4,7 +4,7 @@
 [ext_resource path="res://tut.png" type="Texture" id=2]
 [ext_resource path="res://tuteye.png" type="Texture" id=3]
 [ext_resource path="res://blue.png" type="Texture" id=4]
-[ext_resource path="res://tut/tuteye.gd" type="Script" id=5]
+[ext_resource path="res://flut.wav" type="AudioStream" id=6]
 
 [node name="tut" type="Control"]
 margin_left = -2070.77
@@ -37,7 +37,6 @@ __meta__ = {
 position = Vector2( 2035.16, -32.9246 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
-script = ExtResource( 5 )
 
 [node name="tuteyeblack" type="Sprite" parent="tuteye"]
 scale = Vector2( 0.5, 0.5 )
@@ -53,7 +52,6 @@ texture = ExtResource( 2 )
 position = Vector2( 2070.37, -31.0517 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
-script = ExtResource( 5 )
 
 [node name="tuteyeblack" type="Sprite" parent="tuteye2"]
 scale = Vector2( 0.5, 0.5 )
@@ -63,3 +61,7 @@ texture = ExtResource( 3 )
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="talk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -20.0
