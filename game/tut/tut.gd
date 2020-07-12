@@ -8,6 +8,8 @@ signal start_pressed
 signal play
 var i = 0
 export(PackedScene) var cursor_scn
+onready var startpos = $tut.position
+var c = 0
 
 func intro():
 	yield(self, "enter_pressed")
@@ -76,3 +78,9 @@ func _input(event):
 		
 func _on_start_start_pressed():
 	emit_signal("start_pressed")
+
+
+func _process(delta):
+	c += delta
+	$tut.position = startpos + Vector2(0,sin(c*2)*3)
+	

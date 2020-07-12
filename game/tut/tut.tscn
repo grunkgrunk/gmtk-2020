@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://tut/tut.gd" type="Script" id=1]
 [ext_resource path="res://tut.png" type="Texture" id=2]
 [ext_resource path="res://tuteye.png" type="Texture" id=3]
 [ext_resource path="res://blue.png" type="Texture" id=4]
+[ext_resource path="res://tut/tuteye.gd" type="Script" id=5]
 
 [node name="tut" type="Control"]
 margin_left = -2070.77
@@ -36,15 +37,29 @@ __meta__ = {
 position = Vector2( 2035.16, -32.9246 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
+script = ExtResource( 5 )
+
+[node name="tuteyeblack" type="Sprite" parent="tuteye"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="tween" type="Tween" parent="tuteye"]
 
 [node name="tut" type="Sprite" parent="."]
 position = Vector2( 2083.07, 14.5835 )
 texture = ExtResource( 2 )
 
-[node name="tuteye2" type="Sprite" parent="tut"]
-position = Vector2( -11.3766, -46.8782 )
+[node name="tuteye2" type="Sprite" parent="."]
+position = Vector2( 2070.37, -31.0517 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
+script = ExtResource( 5 )
+
+[node name="tuteyeblack" type="Sprite" parent="tuteye2"]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 3 )
+
+[node name="tween" type="Tween" parent="tuteye2"]
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.1
