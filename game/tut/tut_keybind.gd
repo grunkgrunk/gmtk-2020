@@ -32,7 +32,7 @@ var cur_key_idx = 0
 
 func _ready():
 	# get_node(rebindPath).hide()
-	t("ÃÃÃÃÃÃÃÃh of course you couldn't double-jump: Double-jump was bound to the wrong key...")
+	t("Aaahhhh! Of course you couldn't double-jump: Double-jump was bound to the wrong key...")
 	yield(self, "enter_pressed")
 	t("See this rebind all button? You can click the 'rebind all'-button to rebind all keys")
 	var c = cursorscn.instance()
@@ -69,8 +69,13 @@ func _ready():
 	
 
 
-func t(s):
+func t(s,t = 0.05):
+	$Text.visible_characters = 0
 	$Text.text = s
+	for i in range(len(s)):
+		$timer.start(t)
+		$Text.visible_characters += 1
+		yield($timer,"timeout")
 
 func _input(event):
 	if(event.is_action_pressed("continue")):

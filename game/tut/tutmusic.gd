@@ -34,8 +34,14 @@ func _ready():
 	t("Now that you have chosen the music, you can press escape to return to the game")
 	yield(self, "esc_pressed")
 	emit_signal("musicjokedone")
-func t(s):
+	
+func t(s,t = 0.05):
+	$Text.visible_characters = 0
 	$Text.text = s
+	for i in range(len(s)):
+		$timer.start(t)
+		$Text.visible_characters += 1
+		yield($timer,"timeout")
 
 func _input(event):
 	if(event.is_action_pressed("continue")):

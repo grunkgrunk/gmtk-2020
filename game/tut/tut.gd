@@ -59,8 +59,13 @@ func _ready():
 	#topdown.hide()
 	intro()
 
-func t(s):
+func t(s,t = 0.05):
+	$Text.visible_characters = 0
 	$Text.text = s
+	for i in range(len(s)):
+		$timer.start(t)
+		$Text.visible_characters += 1
+		yield($timer,"timeout")
 
 func _input(event):
 	if(event.is_action_pressed("continue")):
