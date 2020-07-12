@@ -5,7 +5,7 @@ signal right_pressed
 signal esc_pressed
 signal musicjokedone
 
-
+var donetalking = true
 var i = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -35,15 +35,23 @@ func _ready():
 	yield(self, "esc_pressed")
 	emit_signal("musicjokedone")
 	
-func t(s,t = 0.05):
+func t(s,t = 0.03):
+	donetalking = false
 	$Text.visible_characters = 0
 	$Text.text = s
 	for i in range(len(s)):
+		if(randf()>0.3):
+			$talk.pitch_scale = rand_range(0.8,1.2)
+			$talk.play()
 		$timer.start(t)
 		$Text.visible_characters += 1
 		yield($timer,"timeout")
+	$talk.stop()
+	donetalking = true
 
 func _input(event):
+	if not donetalking:
+		return
 	if(event.is_action_pressed("continue")):
 		emit_signal("enter_pressed")
 	if(event.is_action_pressed("ui_right")):

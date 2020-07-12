@@ -65,7 +65,7 @@ func _ready():
 	#topdown.hide()
 	intro()
 
-func t(s,t = 0.05):
+func t(s,t = 0.03):
 	donetalking = false
 	$Text.visible_characters = 0
 	$Text.text = s

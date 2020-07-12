@@ -5,7 +5,7 @@ signal k_pressed
 signal escape_pressed
 signal key_pressed
 
-
+var donetalking = true
 var has_failed = false
 
 export(PackedScene) var keybindscn
@@ -52,15 +52,23 @@ func _ready():
 	mainGame.play()
 
 
-func t(s,t = 0.05):
+func t(s,t = 0.03):
+	donetalking = false
 	$Text.visible_characters = 0
 	$Text.text = s
 	for i in range(len(s)):
+		if(randf()>0.3):
+			$talk.pitch_scale = rand_range(0.8,1.2)
+			$talk.play()
 		$timer.start(t)
 		$Text.visible_characters += 1
 		yield($timer,"timeout")
+	$talk.stop()
+	donetalking = true
 
 func _input(event):
+	if not donetalking:
+		return
 	if(event.is_action_pressed("continue")):
 		emit_signal("enter_pressed")
 

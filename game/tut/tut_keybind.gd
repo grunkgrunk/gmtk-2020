@@ -12,6 +12,7 @@ export(NodePath) var loadLabelPath
 export(PackedScene) var cursorscn
 
 onready var grid = get_node(gridPath)
+var donetalking = true
 
 var rebinding = false
 var correct_keys = [
@@ -69,18 +70,24 @@ func _ready():
 	
 
 
-func t(s,t = 0.05):
+func t(s,t = 0.03):
+	donetalking = false
 	$Text.visible_characters = 0
 	$Text.text = s
 	for i in range(len(s)):
+		if(randf()>0.3):
+			$talk.pitch_scale = rand_range(0.8,1.2)
+			$talk.play()
 		$timer.start(t)
 		$Text.visible_characters += 1
 		yield($timer,"timeout")
+	$talk.stop()
+	donetalking = true
 
 func _input(event):
-	if(event.is_action_pressed("continue")):
+	if(event.is_action_pressed("continue") and donetalking):
 		emit_signal("enter_pressed")
-	if event is InputEventKey and rebinding and cur_key_idx < len(correct_keys) and not event.is_echo():
+	if event is InputEventKey and rebinding and cur_key_idx < len(correct_keys) and not event.is_echo() and donetalking:
 		if char(event.scancode) == correct_keys[cur_key_idx].newkey:
 			emit_signal("correct_key_bound")
 			cur_key_idx += 1

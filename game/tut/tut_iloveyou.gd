@@ -4,6 +4,7 @@ signal start_pressed
 signal line_edit
 signal iloveyouwasajoke
 
+var donetalking = true
 export(NodePath) var dialog_path
 export(PackedScene) var cursor_scn
 
@@ -14,16 +15,22 @@ func _ready():
 func _on_LineEdit_text_entered(txt):
 	emit_signal("line_edit", txt)
 
-func t(s,t = 0.05):
+func t(s,t = 0.03):
+	donetalking = false
 	$Text.visible_characters = 0
 	$Text.text = s
 	for i in range(len(s)):
+		if(randf()>0.3):
+			$talk.pitch_scale = rand_range(0.8,1.2)
+			$talk.play()
 		$timer.start(t)
 		$Text.visible_characters += 1
 		yield($timer,"timeout")
+	$talk.stop()
+	donetalking = true
 
 func _input(event):
-	if(event.is_action_pressed("continue")):
+	if(event.is_action_pressed("continue") and donetalking):
 		emit_signal("enter_pressed")
 		
 func _on_start_start_pressed():
