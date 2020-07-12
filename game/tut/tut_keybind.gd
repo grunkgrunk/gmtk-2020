@@ -15,10 +15,10 @@ onready var grid = get_node(gridPath)
 
 var rebinding = false
 var correct_keys = [
-	{"curkey":"jump", "newkey": "W", "msg": "First press W to bind W to jump"}, 
-	{"curkey":"left", "newkey": "D", "msg": "Now press a key to go left (it has to be D, it's the only sensible key to use for this purpose)"}, 
-	{"curkey":"right", "newkey": "A", "msg": "Let's bind a key for moving right. Conventions say that this should be A"}, 
-	{"curkey":"djump", "newkey": "W", "msg": "This is the most important one; bind this to W and it should be easier for you to double jump"}, 
+	{"curkey":"jump", "newkey": "W", "msg": "First press 'W' to bind 'W' to jump"}, 
+	{"curkey":"left", "newkey": "D", "msg": "Now press a key to go left (Conventions say that this should be 'D')"}, 
+	{"curkey":"right", "newkey": "A", "msg": "Let's bind a key for moving right. it has to be 'A'. It's the only sensible key to use for this purpose"}, 
+	{"curkey":"djump", "newkey": "W", "msg": "This is the most important one; bind this to 'W' and it should be easier for you to double jump"}, 
 ]
 
 var missing_actions = [
@@ -32,9 +32,9 @@ var cur_key_idx = 0
 
 func _ready():
 	# get_node(rebindPath).hide()
-	t("ÃÃÃÃÃÃÃÃh of course you couldn't jump, double jump was bound to the wrong key...")
+	t("ÃÃÃÃÃÃÃÃh of course you couldn't double-jump: Double-jump was bound to the wrong key...")
 	yield(self, "enter_pressed")
-	t("See this rebind all button? You can click the button to rebind all keys")
+	t("See this rebind all button? You can click the 'rebind all'-button to rebind all keys")
 	var c = cursorscn.instance()
 	get_parent().add_child(c)
 	c.global_position = get_viewport().get_mouse_position()
@@ -62,7 +62,7 @@ func _ready():
 	yield(self, "enter_pressed")
 	t("I'm just trying to do my job, ok? (Press enter again)")
 	yield(self, "enter_pressed")
-	t("Thank you for being so understanding (You know what to do (Press enter))")
+	t("Thank you for being so understanding (Press enter)")
 	yield(self, "enter_pressed")
 	emit_signal("donebinding")
 	

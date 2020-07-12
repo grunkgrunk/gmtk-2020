@@ -25,17 +25,17 @@ func _on_start_start_pressed():
 	emit_signal("start_pressed")
 
 func iloveyou():
-	t("I saved your life.")
+	t("I saved your life!")
 	yield(self, "enter_pressed")
-	t("Yeah you probably didn't even realize that did you?")
+	t("Yeah you probably didn't even realize that, did you?")
 	yield(self, "enter_pressed")
-	t("Players who come to play this game are always the same")
+	t("Players who come to play my games are always the same")
 	yield(self, "enter_pressed")
-	t("There are just a bunch of unthankful pricks")
+	t("They are a bunch of unthankful pricks!")
 	yield(self, "enter_pressed")
 	t("But I am a good guy.")
 	yield(self, "enter_pressed")
-	t("I don't even expect you to give me anything in return that is how good of a guy I am.")
+	t("I don't even expect you to give me anything in return. That is how good of a guy I am.")
 	yield(self, "enter_pressed")
 	var c = cursor_scn.instance()
 	var dia = get_node(dialog_path)
@@ -46,14 +46,14 @@ func iloveyou():
 		var response = yield(self, "line_edit")
 		if response == "thank you":
 			break
-		t("Did you just call me" + response + "?. Say 'thank you'")
+		t("Did you just say " + response + " to me!?.\n Say 'thank you'!")
 	dia.hide()
 	dia.text = ""
 	t("Ohh you are too sweet, no problem!")
 	yield(self, "enter_pressed")
 	t("I love you")
 	yield(self, "enter_pressed")
-	t("Now say: 'i love you too'")
+	t("Now say: 'I love you too'")
 	dia.show()
 	yield(self, "enter_pressed")
 
@@ -61,14 +61,18 @@ func iloveyou():
 		var response = yield(self, "line_edit")
 		if response == "i love you too":
 			break
-		t("Be kind, I know you can! Say 'i love you too'.")
+		t("Be kind, I know you can! Say 'I love you too'.")
 	c.queue_free()
 	dia.hide()
 	t("Hahahahah")
 	yield(self, "enter_pressed")
 	t("I never loved you, it was a joke")
 	yield(self, "enter_pressed")
-	t("Anyways, the only reason I saved you is because I don't want to teach everything about the game again.")
+	t("Anyways, I admit I saved you for selfish reasons.")
+	yield(self, "enter_pressed")
+	t("I want to see the look on your face when you get to the end of my story!")
+	yield(self, "enter_pressed")
 	emit_signal("iloveyouwasajoke")
+	
 
 	
