@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gmtk2020.png" type="Texture" id=1]
+
+[node name="tuteye" type="Sprite"]
+position = Vector2( 2035.16, -32.9246 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 584, 561.2, 77.9, 86.45 )
+
+[node name="tuteyeblack" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 855.774, 590.558, 39.2876, 41.743 )

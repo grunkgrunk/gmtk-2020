@@ -8,17 +8,14 @@ signal start_pressed
 signal play
 var i = 0
 export(PackedScene) var cursor_scn
-onready var startpos = $tut.position
-var c = 0
-var maxlook = 15
-onready var eyes = ["tuteye","tuteye2"]
+
 var donetalking = true
 
 
 func intro():
 	yield(self, "enter_pressed")
 	show()
-	t("Hello I am your Totally Universal Tutorial")
+	t("Hello I am your Totally Universal Tutorial\n(Press 'enter' to continue)")
 	yield(self, "enter_pressed")
 	t("But you can just call me TUT")
 	yield(self, "enter_pressed")
@@ -29,16 +26,18 @@ func intro():
 	var cursor = cursor_scn.instance()
 	get_parent().add_child(cursor)
 	yield(self, "start_pressed")
+	cursor.hide()
 	t("Well done! But: My job is to make sure you understand everything.")
-	yield(self, "start_pressed")
-	t("Would you please press it one more time, slowly, so I can see you technique?")
+	yield(self, "enter_pressed")
+	cursor.show()
+	t("Would you please press it one more time, slowly, so I can see your technique?")
 	get_viewport().warp_mouse(Vector2(0,0))
 	yield(self, "start_pressed")
 	t("Nicely done! Without further ado let's get started!")
 	topdown.show()
 	cursor.queue_free()
 	get_node("/root/world/ui_layer/ui").visible = false
-	t("I will just read you from the manual:")
+	t("I will just read from the manual:")
 	yield(self,"enter_pressed")
 	t("'In this game you play as a tank that is out of control'")
 	yield(self,"enter_pressed")
@@ -58,6 +57,8 @@ func intro():
 	g.get_node("player/Camera2D").current = true
 	get_node("/root/world").add_child(g)
 	queue_free()
+	
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -90,24 +91,3 @@ func _input(event):
 func _on_start_start_pressed():
 	emit_signal("start_pressed")
 
-
-func _process(delta):
-	c += delta
-	$tut.position = startpos + Vector2(0,sin(c*2)*3)
-	
-	var c = get_tree().get_nodes_in_group("cursor")
-	var r = randf() > 0.993
-	for estr in eyes:
-		var e = get_node(estr)
-		var tween = e.get_node("tween")
-		if r:
-			tween.interpolate_property(e,"scale",Vector2(1,1),Vector2(1,0),0.1)
-			tween.start()
-			yield(tween,"tween_completed")
-			tween.interpolate_property(e,"scale",Vector2(1,0),Vector2(1,1),0.1)
-			tween.start()
-		if len(c) > 0:
-			var d = e.get_node("tuteyeblack").global_position - c[0].global_position
-			d = -d/d.length()
-			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
-	

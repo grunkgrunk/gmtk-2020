@@ -8,10 +8,7 @@ var donetalking = true
 export(NodePath) var dialog_path
 export(PackedScene) var cursor_scn
 
-var c = 0
-var maxlook = 10
-onready var startpos = $tut.global_position
-onready var eyes = ["tuteye","tuteye2"]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	iloveyou()
@@ -60,7 +57,7 @@ func iloveyou():
 	dia.show()
 	while true:
 		var response = yield(self, "line_edit")
-		if response == "thank you":
+		if response.to_lower() == "thank you":
 			break
 		t("Did you just say " + response + " to me!?.\n Say 'thank you'!")
 	dia.hide()
@@ -75,9 +72,9 @@ func iloveyou():
 
 	while true:
 		var response = yield(self, "line_edit")
-		if response == "i love you too":
+		if response.to_lower() == "i love you too":
 			break
-		t("Be kind, I know you can! Say 'I love you too'.")
+		t("Be kind, I know you can! Say: 'I love you too'.")
 	c.queue_free()
 	dia.hide()
 	t("Hahahahah")
@@ -91,23 +88,4 @@ func iloveyou():
 	emit_signal("iloveyouwasajoke")
 	
 
-func _process(delta):
-	c += delta
-	$tut.position = startpos + Vector2(0,sin(c*2)*3)
-	
-	var c = get_tree().get_nodes_in_group("cursor")
-	var r = randf() > 0.993
-	for estr in eyes:
-		var e = get_node(estr)
-		var tween = e.get_node("tween")
-		if r:
-			tween.interpolate_property(e,"scale",Vector2(1,1),Vector2(1,0),0.1)
-			tween.start()
-			yield(tween,"tween_completed")
-			tween.interpolate_property(e,"scale",Vector2(1,0),Vector2(1,1),0.1)
-			tween.start()
-		if len(c) > 0:
-			var d = e.get_node("tuteyeblack").global_position - c[0].global_position
-			d = -d/d.length()
-			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
 

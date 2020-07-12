@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://gmtk2020.png" type="Texture" id=1]
 [ext_resource path="res://dragon.gd" type="Script" id=2]
@@ -7,22 +7,25 @@
 [ext_resource path="res://idle.tres" type="Animation" id=5]
 [ext_resource path="res://dragonsound.wav" type="AudioStream" id=6]
 [ext_resource path="res://dragonmusic.wav" type="AudioStream" id=7]
+[ext_resource path="res://bossfight.gd" type="Script" id=8]
+[ext_resource path="res://bowl.wav" type="AudioStream" id=9]
+[ext_resource path="res://eye.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="AtlasTexture" id=7]
+[sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 0, 1500, 500, 500 )
 
-[sub_resource type="AtlasTexture" id=8]
+[sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 1 )
 region = Rect2( 500, 1500, 500, 500 )
 
-[sub_resource type="SpriteFrames" id=9]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ) ],
+"frames": [ SubResource( 2 ), SubResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -88,14 +91,15 @@ tracks/3/keys = {
 radius = 159.752
 
 [node name="bossfight" type="Node2D"]
+script = ExtResource( 8 )
 
 [node name="dragon" type="AnimatedSprite" parent="." groups=[
 "pause",
 ]]
 material = SubResource( 1 )
-position = Vector2( 1351.26, 220.294 )
-rotation = -0.673477
-frames = SubResource( 9 )
+position = Vector2( 1100.19, 227.845 )
+rotation = -0.872665
+frames = SubResource( 4 )
 script = ExtResource( 2 )
 fireball_scene = ExtResource( 3 )
 
@@ -130,8 +134,17 @@ shape = SubResource( 6 )
 stream = ExtResource( 7 )
 volume_db = -13.126
 
+[node name="tuteye" parent="dragon" instance=ExtResource( 10 )]
+position = Vector2( -78.9719, -71.7764 )
+
 [node name="Position2D" type="Position2D" parent="."]
 position = Vector2( 748.864, 268.019 )
+
+[node name="bowlersound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
+volume_db = -8.078
+
+[node name="kill_tween" type="Tween" parent="."]
 [connection signal="timeout" from="dragon/shoot_timer" to="dragon" method="_on_shoot_timer_timeout"]
 [connection signal="animation_finished" from="dragon/animation" to="dragon" method="_on_animation_animation_finished"]
 [connection signal="timeout" from="dragon/idle_timer" to="dragon" method="_on_idle_timer_timeout"]

@@ -6,6 +6,8 @@ export(PackedScene) var fireball_scene
 var paused = false
 
 func pause():
+	if paused:
+		return
 	paused = true
 	$animation.queue_free()
 func resume():
@@ -13,6 +15,8 @@ func resume():
 	$animation.play()
 
 func fire_balls():
+	if paused:
+		return
 	$shoot_timer.start()
 
 func _on_shoot_timer_timeout():
@@ -41,6 +45,8 @@ func _on_animation_animation_finished(anim_name):
 		$animation.play("idle")
 
 func _on_idle_timer_timeout():
+	if paused:
+		return
 	$animation.play("fire")
 	
 func shake():

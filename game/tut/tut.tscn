@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tut/tut.gd" type="Script" id=1]
-[ext_resource path="res://tut.png" type="Texture" id=2]
-[ext_resource path="res://tuteye.png" type="Texture" id=3]
+[ext_resource path="res://gmtk2020.png" type="Texture" id=2]
+[ext_resource path="res://eye.tscn" type="PackedScene" id=3]
 [ext_resource path="res://blue.png" type="Texture" id=4]
+[ext_resource path="res://tut/guy.gd" type="Script" id=5]
 [ext_resource path="res://flut.wav" type="AudioStream" id=6]
+[ext_resource path="res://tut/fontres.tres" type="DynamicFont" id=7]
+[ext_resource path="res://tut/Text2.gd" type="Script" id=8]
 
 [node name="tut" type="Control"]
 margin_left = -2070.77
@@ -16,48 +19,64 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="guy" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="tuteye" parent="guy" instance=ExtResource( 3 )]
+position = Vector2( 2067.13, -89.954 )
+
+[node name="tut" type="Sprite" parent="guy"]
+position = Vector2( 2083.07, 14.5835 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 271.047, 488.292, 185.403, 275.843 )
+
+[node name="tuteye2" parent="guy" instance=ExtResource( 3 )]
+position = Vector2( 2110.51, -79.6545 )
+
+[node name="Timer" type="Timer" parent="guy"]
+autostart = true
+
+[node name="tween" type="Tween" parent="guy"]
+
 [node name="blue" type="Sprite" parent="."]
+visible = false
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 1921.13, -9.62108 )
 scale = Vector2( 0.76, 0.709678 )
 texture = ExtResource( 4 )
 
-[node name="Text" type="RichTextLabel" parent="."]
-margin_left = 1838.0
-margin_top = -66.0
-margin_right = 2013.0
-margin_bottom = 35.0
-text = "blabla
+[node name="Text2" type="Label" parent="."]
+margin_left = 1780.54
+margin_top = -45.4731
+margin_right = 2472.54
+margin_bottom = 621.527
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.00392157, 0.00392157, 0, 1 )
+text = "blabla how are you doing
 "
+autowrap = true
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="tuteye" type="Sprite" parent="."]
-position = Vector2( 2035.16, -32.9246 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
-
-[node name="tuteyeblack" type="Sprite" parent="tuteye"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
-
-[node name="tween" type="Tween" parent="tuteye"]
-
-[node name="tut" type="Sprite" parent="."]
-position = Vector2( 2083.07, 14.5835 )
-texture = ExtResource( 2 )
-
-[node name="tuteye2" type="Sprite" parent="."]
-position = Vector2( 2070.37, -31.0517 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
-
-[node name="tuteyeblack" type="Sprite" parent="tuteye2"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 3 )
-
-[node name="tween" type="Tween" parent="tuteye2"]
+[node name="Text" type="Label" parent="."]
+margin_left = 1782.54
+margin_top = -44.4731
+margin_right = 2474.54
+margin_bottom = 622.527
+rect_scale = Vector2( 0.4, 0.4 )
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.0784314, 0.694118, 0.670588, 1 )
+custom_colors/font_outline_modulate = Color( 0.952941, 0.92549, 0.760784, 1 )
+text = "blabla how are you doing
+"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="timer" type="Timer" parent="."]
 wait_time = 0.1
@@ -65,3 +84,4 @@ wait_time = 0.1
 [node name="talk" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -20.0
+[connection signal="timeout" from="guy/Timer" to="guy" method="_on_Timer_timeout"]

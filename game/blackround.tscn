@@ -3,7 +3,6 @@
 [ext_resource path="res://tut/download.jpg" type="Texture" id=1]
 
 [node name="blackround" type="Sprite"]
-modulate = Color( 1, 1, 1, 0.388235 )
-position = Vector2( 600.817, 324.661 )
+position = Vector2( 602.936, 326.78 )
 scale = Vector2( 5.74027, 3.19462 )
 texture = ExtResource( 1 )

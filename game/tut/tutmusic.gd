@@ -14,16 +14,16 @@ onready var cs = get_tree().get_nodes_in_group("Camera")
 func _ready():
 	t("Let us find some nice, relaxing background music.")
 	yield(self, "enter_pressed")
-	$text.text = "Currently playing: 'Movement no. 271 in D-minor (the saddest key)' by Bruder Johannes Sebastian Emanuel-Mattias"
+	$text.text = "Currently playing: 'Movement no. 271 in D-minor (the saddest key)' \n\n  - by Bruder Johannes Sebastian Emanuel-Mattias"
 	$nice1.play()
 	t("Hmm this is nice. But slightly too baroque-esque for my delicate palette. Move right to jump to the next track")
 	yield(self, "right_pressed")
-	$text.text = "Currently playing: 'Take 4' by the Bave Drubeck Quartet"
+	$text.text = "Currently playing: 'Take 4' \n\n  - by the Bave Drubeck Quartet"
 	$nice1.stop()
 	$nice2.play()
 	t("Oh I like this track, but I am maybe in the mood for something less jazzy right now.")
 	yield(self, "right_pressed")
-	$text.text = "Currently playing: 'Death Underground' by Underground Death"
+	$text.text = "Currently playing: 'Death Underground' \n\n  - by Underground Death"
 	$nice2.stop()
 	$nice3.play()
 	t("This is an old classic, but we should be saving this track for the water level.")
@@ -31,7 +31,7 @@ func _ready():
 	$nice3.stop()
 	$techno.play()
 	bass = true
-	$text.text = "Currently playing: 'T3chn0-B4ss' by VodkaNostroviaComrade"
+	$text.text = "Currently playing: 'T3chn0-B4ss' \n\n  - by VodkaNostroviaComrade"
 	t("Perfect! This is background music for a heroic adventure")
 	yield(self, "enter_pressed")
 	t("Now that you have chosen the music, you can press escape to return to the game")

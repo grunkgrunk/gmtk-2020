@@ -1,32 +1,68 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://start.gd" type="Script" id=1]
+[ext_resource path="res://white.png" type="Texture" id=2]
+[ext_resource path="res://tut/fontres.tres" type="DynamicFont" id=3]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Label.gd" type="Script" id=5]
+[ext_resource path="res://dragonmusic.wav" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+outline_color = Color( 0.952941, 0.92549, 0.760784, 1 )
+extra_spacing_space = 20
+font_data = ExtResource( 4 )
 
 [node name="start" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.840912
+margin_top = 0.840881
+margin_right = 0.840942
+margin_bottom = 0.840881
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 427.0
-margin_top = 236.0
-margin_right = 591.0
-margin_bottom = 273.0
-text = "Start"
+[node name="Label" type="Label" parent="."]
+margin_left = 344.622
+margin_top = 91.7837
+margin_right = 1132.62
+margin_bottom = 156.784
+custom_fonts/font = ExtResource( 3 )
+text = "Shoot 2 Move"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_left = 415.0
-margin_top = 151.0
-margin_right = 600.0
-margin_bottom = 165.0
-text = "Amazing entry for gmtk 2020"
+[node name="Button" type="TextureButton" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 427.0
+margin_top = 236.0
+margin_right = 591.0
+margin_bottom = 273.0
+texture_normal = ExtResource( 2 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="Label" parent="Button"]
+margin_left = 57.0846
+margin_top = 10.6508
+margin_right = 157.085
+margin_bottom = 27.6508
+custom_fonts/font = SubResource( 1 )
+text = "START"
+script = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="Button/Label"]
+wait_time = 0.5
+autostart = true
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -11.107
+pitch_scale = 0.34
+autoplay = true
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

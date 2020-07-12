@@ -1,10 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tut/tut.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tut/tut_keybind.gd" type="Script" id=2]
 [ext_resource path="res://cursor.tscn" type="PackedScene" id=3]
-[ext_resource path="res://tut/dialog.png" type="Texture" id=4]
+[ext_resource path="res://white.png" type="Texture" id=4]
 [ext_resource path="res://blackround.tscn" type="PackedScene" id=5]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://tut/fontres.tres" type="DynamicFont" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_color = Color( 0.952941, 0.92549, 0.760784, 1 )
+extra_spacing_space = 20
+font_data = ExtResource( 6 )
 
 [node name="keybindmenu" type="Control"]
 anchor_right = 1.0
@@ -16,163 +24,170 @@ __meta__ = {
 [node name="blackround" parent="." instance=ExtResource( 5 )]
 position = Vector2( 493.158, 318.14 )
 
-[node name="dialog" type="Sprite" parent="."]
-position = Vector2( 503.837, 284.769 )
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 4 )
-
 [node name="tut" parent="." instance=ExtResource( 1 )]
-margin_left = -1777.09
-margin_top = 243.244
-margin_right = -1777.09
-margin_bottom = 243.244
+margin_left = -1262.32
+margin_top = 193.113
+margin_right = -1262.32
+margin_bottom = 193.113
 script = ExtResource( 2 )
 gridPath = NodePath("../grid")
 rebindPath = NodePath("../rebind")
 loadLabelPath = NodePath("../load")
 cursorscn = ExtResource( 3 )
 
-[node name="timer" type="Timer" parent="tut"]
+[node name="bindtimer" type="Timer" parent="tut"]
 
 [node name="grid" type="GridContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 434.982
-margin_top = 198.829
-margin_right = 434.982
-margin_bottom = 198.829
+margin_left = 55.5445
+margin_top = 147.86
+margin_right = 55.5444
+margin_bottom = 147.86
 columns = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="jump" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_right = 111.0
-margin_bottom = 14.0
+margin_right = 310.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
 text = "Jump"
 
 [node name="jump_bind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 115.0
-margin_right = 128.0
-margin_bottom = 14.0
+margin_left = 314.0
+margin_right = 342.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 1 )
 text = "W"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="left" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 18.0
-margin_right = 111.0
-margin_bottom = 32.0
+margin_top = 37.0
+margin_right = 310.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 1 )
 text = "Move left"
 
 [node name="left_bind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 115.0
-margin_top = 18.0
-margin_right = 128.0
-margin_bottom = 32.0
+margin_left = 314.0
+margin_top = 37.0
+margin_right = 342.0
+margin_bottom = 70.0
+custom_fonts/font = SubResource( 1 )
 text = "A"
 
 [node name="right" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 36.0
-margin_right = 111.0
-margin_bottom = 50.0
+margin_top = 74.0
+margin_right = 310.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 1 )
 text = "Move right"
 
 [node name="right_bind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 115.0
-margin_top = 36.0
-margin_right = 128.0
-margin_bottom = 50.0
+margin_left = 314.0
+margin_top = 74.0
+margin_right = 342.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 1 )
 text = "D"
 
 [node name="djump" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 54.0
-margin_right = 111.0
-margin_bottom = 68.0
+margin_top = 111.0
+margin_right = 310.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 1 )
 text = "Double jump"
 
 [node name="djump_bind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 115.0
-margin_top = 54.0
-margin_right = 128.0
-margin_bottom = 68.0
-text = "Ã"
+margin_left = 314.0
+margin_top = 111.0
+margin_right = 342.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 1 )
+text = "$"
 
 [node name="enter_mech" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 72.0
-margin_right = 111.0
-margin_bottom = 86.0
+margin_top = 148.0
+margin_right = 310.0
+margin_bottom = 181.0
+custom_fonts/font = SubResource( 1 )
 text = "Enter Mech"
 
 [node name="enter_mech_bind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 115.0
-margin_top = 72.0
-margin_right = 128.0
-margin_bottom = 86.0
+margin_left = 314.0
+margin_top = 148.0
+margin_right = 342.0
+margin_bottom = 181.0
+custom_fonts/font = SubResource( 1 )
 text = "O"
 
 [node name="crafting" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 90.0
-margin_right = 111.0
-margin_bottom = 104.0
+margin_top = 185.0
+margin_right = 310.0
+margin_bottom = 218.0
+custom_fonts/font = SubResource( 1 )
 text = "Crafting menu"
 
 [node name="crafting_bind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 115.0
-margin_top = 90.0
-margin_right = 128.0
-margin_bottom = 104.0
+margin_left = 314.0
+margin_top = 185.0
+margin_right = 342.0
+margin_bottom = 218.0
+custom_fonts/font = SubResource( 1 )
 text = "C"
 
 [node name="live_chat" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 108.0
-margin_right = 111.0
-margin_bottom = 122.0
+margin_top = 222.0
+margin_right = 310.0
+margin_bottom = 255.0
+custom_fonts/font = SubResource( 1 )
 text = "Open live chat"
 
 [node name="live_chat_bind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 115.0
-margin_top = 108.0
-margin_right = 128.0
-margin_bottom = 122.0
+margin_left = 314.0
+margin_top = 222.0
+margin_right = 342.0
+margin_bottom = 255.0
+custom_fonts/font = SubResource( 1 )
 text = "S"
 
 [node name="keybind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_top = 126.0
-margin_right = 111.0
-margin_bottom = 140.0
-text = "Keybinding menu"
+margin_top = 259.0
+margin_right = 310.0
+margin_bottom = 292.0
+custom_fonts/font = SubResource( 1 )
+text = "Keybind-menu      "
 
 [node name="keybind_bind" type="Label" parent="grid"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 115.0
-margin_top = 126.0
-margin_right = 128.0
-margin_bottom = 140.0
+margin_left = 314.0
+margin_top = 259.0
+margin_right = 342.0
+margin_bottom = 292.0
+custom_fonts/font = SubResource( 1 )
 text = "K"
 
-[node name="rebind" type="Button" parent="."]
-visible = false
-margin_left = 419.801
-margin_top = 262.656
-margin_right = 494.801
-margin_bottom = 282.656
+[node name="rebind" type="TextureButton" parent="."]
+self_modulate = Color( 0.729412, 0, 0, 1 )
+margin_left = 72.1237
+margin_top = 483.479
+margin_right = 345.124
+margin_bottom = 554.479
+texture_normal = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="rebind"]
+margin_left = 5.54916
+margin_top = 3.15271
+margin_right = 68.5492
+margin_bottom = 17.1527
+custom_fonts/font = ExtResource( 7 )
 text = "Rebind all"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -180,9 +195,13 @@ __meta__ = {
 
 [node name="load" type="Label" parent="."]
 visible = false
-margin_left = 438.618
-margin_top = 52.9731
-margin_right = 478.618
-margin_bottom = 66.9731
+margin_left = 78.1263
+margin_top = 486.899
+margin_right = 367.126
+margin_bottom = 551.899
+custom_fonts/font = ExtResource( 7 )
 text = "Rebinding..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="rebind" to="tut" method="_on_rebind_pressed"]

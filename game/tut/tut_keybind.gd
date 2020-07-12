@@ -3,7 +3,6 @@ extends Control
 signal enter_pressed
 signal rebind_pressed
 signal correct_key_bound
-signal timeout
 signal donebinding
 
 export(NodePath) var gridPath
@@ -11,10 +10,7 @@ export(NodePath) var rebindPath
 export(NodePath) var loadLabelPath
 export(PackedScene) var cursorscn
 
-var c = 0
-var maxlook = 10
-onready var startpos = $tut.global_position
-onready var eyes = ["tuteye","tuteye2"]
+
 onready var grid = get_node(gridPath)
 var donetalking = true
 
@@ -23,7 +19,7 @@ var correct_keys = [
 	{"curkey":"jump", "newkey": "W", "msg": "First press 'W' to bind 'W' to jump"}, 
 	{"curkey":"left", "newkey": "D", "msg": "Now press a key to go left (Conventions say that this should be 'D')"}, 
 	{"curkey":"right", "newkey": "A", "msg": "Let's bind a key for moving right. it has to be 'A'. It's the only sensible key to use for this purpose"}, 
-	{"curkey":"djump", "newkey": "W", "msg": "This is the most important one; bind this to 'W' and it should be easier for you to double jump"}, 
+	{"curkey":"djump", "newkey": "W", "msg": "This is the most important one: Bind double jump to 'W'!"}, 
 ]
 
 var missing_actions = [
@@ -37,7 +33,7 @@ var cur_key_idx = 0
 
 func _ready():
 	# get_node(rebindPath).hide()
-	t("Aaahhhh! Of course you couldn't double-jump: Double-jump was bound to the wrong key...")
+	t("Aaahhhh! Of course you couldn't double-jump: Double-jump was bound to $...")
 	yield(self, "enter_pressed")
 	t("See this rebind all button? You can click the 'rebind all'-button to rebind all keys")
 	var c = cursorscn.instance()
@@ -51,15 +47,17 @@ func _ready():
 	rebinding = true
 	for k in correct_keys:
 		t(k.msg)
+		grid.get_node(k.curkey + "_bind").text = "_"
 		yield(self, "correct_key_bound")
 		grid.get_node(k.curkey + "_bind").text = k.newkey
 	t("Sorry but you are taking waay too long, let me just fill out the rest of the keybindings with some accessibility friendly ones for you")
-	yield(self, "enter_pressed")
 	t("...")
-	$timer.start()
+	$bindtimer.start()
 	for k in missing_actions:
 		grid.get_node(k.action + "_bind").text = k.bind
-		yield(self, "timeout")
+		$talk.pitch_scale = 1
+		$talk.play()
+		yield($bindtimer, "timeout")
 
 	t("Now let's move on! (Press enter to move on)")
 	yield(self, "enter_pressed")
@@ -103,27 +101,3 @@ func _on_rebind_pressed():
 	if not rebinding:
 		emit_signal("rebind_pressed")
 	
-
-func _on_timer_timeout():
-	emit_signal("timeout")
-
-func _process(delta):
-	c += delta
-	$tut.position = startpos + Vector2(0,sin(c*2)*3)
-	
-	var c = get_tree().get_nodes_in_group("cursor")
-	var r = randf() > 0.993
-	for estr in eyes:
-		var e = get_node(estr)
-		var tween = e.get_node("tween")
-		if r:
-			tween.interpolate_property(e,"scale",Vector2(1,1),Vector2(1,0),0.1)
-			tween.start()
-			yield(tween,"tween_completed")
-			tween.interpolate_property(e,"scale",Vector2(1,0),Vector2(1,1),0.1)
-			tween.start()
-		if len(c) > 0:
-			var d = e.get_node("tuteyeblack").global_position - c[0].global_position
-			d = -d/d.length()
-			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
-

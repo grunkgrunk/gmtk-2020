@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/SCREAM 07 Audio 7.wav-0341f3c65c8eae7542f9260d02cb4048.sample"
+
+[deps]
+
+source_file="res://SCREAM 07 Audio 7.wav"
+dest_files=[ "res://.import/SCREAM 07 Audio 7.wav-0341f3c65c8eae7542f9260d02cb4048.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

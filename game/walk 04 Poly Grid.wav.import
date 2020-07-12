@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/walk 04 Poly Grid.wav-c86978d72afa8e0d8cabfd2914e3fde9.sample"
+
+[deps]
+
+source_file="res://walk 04 Poly Grid.wav"
+dest_files=[ "res://.import/walk 04 Poly Grid.wav-c86978d72afa8e0d8cabfd2914e3fde9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

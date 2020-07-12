@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://yesno.gd" type="Script" id=1]
 [ext_resource path="res://tut/dialog.png" type="Texture" id=2]
 [ext_resource path="res://blackround.tscn" type="PackedScene" id=3]
+[ext_resource path="res://white.png" type="Texture" id=4]
+[ext_resource path="res://SCREAM 08 Audio 8.wav" type="AudioStream" id=5]
+[ext_resource path="res://scream1.wav" type="AudioStream" id=6]
+[ext_resource path="res://SCREAM 07 Audio 7.wav" type="AudioStream" id=7]
+[ext_resource path="res://scream4.wav" type="AudioStream" id=8]
+[ext_resource path="res://scream3.wav" type="AudioStream" id=9]
+[ext_resource path="res://scream2.wav" type="AudioStream" id=10]
+[ext_resource path="res://scream5.wav" type="AudioStream" id=11]
+[ext_resource path="res://SCREAM 10 Audio 10.wav" type="AudioStream" id=12]
+[ext_resource path="res://font.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://tut/fontres.tres" type="DynamicFont" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+outline_color = Color( 0.952941, 0.92549, 0.760784, 1 )
+extra_spacing_space = 10
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+outline_color = Color( 0.952941, 0.92549, 0.760784, 1 )
+extra_spacing_space = 10
+font_data = ExtResource( 13 )
 
 [node name="yesno" type="Node2D"]
 position = Vector2( 508.327, 279.221 )
@@ -13,28 +36,28 @@ position = Vector2( 28.4507, 11.3709 )
 scale = Vector2( 10, 10 )
 
 [node name="dialog2" type="Sprite" parent="."]
+visible = false
 position = Vector2( 12.6745, 29.4296 )
 scale = Vector2( 0.6, 0.3 )
 texture = ExtResource( 2 )
 
-[node name="yes" type="Button" parent="."]
-margin_left = -55.1253
-margin_top = 40.4396
-margin_right = 61.8747
-margin_bottom = 60.4396
-focus_mode = 0
-enabled_focus_mode = 0
-text = "Yes, please"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="white" type="Sprite" parent="."]
+position = Vector2( 31.955, -34.3401 )
+scale = Vector2( 37.5587, 24.5983 )
+texture = ExtResource( 4 )
+
+[node name="white2" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 31.955, -32.8419 )
+scale = Vector2( 36.198, 23.9628 )
+texture = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="."]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = -124.045
-margin_top = -30.221
-margin_right = 172.955
-margin_bottom = 17.779
+margin_left = -110.561
+margin_top = -75.7348
+margin_right = 186.439
+margin_bottom = 873.265
+custom_fonts/font = SubResource( 1 )
 text = "Your OS has detected loud, annoying music for an extended period of time. Would you like to terminate it?"
 autowrap = true
 __meta__ = {
@@ -45,3 +68,65 @@ __meta__ = {
 position = Vector2( -150.16, -42.7667 )
 
 [node name="tween" type="Tween" parent="."]
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = -82.0245
+margin_top = -150.614
+margin_right = 147.976
+margin_bottom = -85.6138
+custom_fonts/font = ExtResource( 14 )
+text = "ALERT!!!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="yes" type="TextureButton" parent="."]
+self_modulate = Color( 0.270588, 1, 0, 1 )
+margin_left = -68.0
+margin_top = 30.0
+margin_right = 106.0
+margin_bottom = 74.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="yes"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 11.0603
+margin_top = 7.1011
+margin_right = 178.06
+margin_bottom = 40.1011
+custom_fonts/font = SubResource( 2 )
+text = "Yes please!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="s1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="s2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="s3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="s4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="s5" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="s6" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="s7" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="s8" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )

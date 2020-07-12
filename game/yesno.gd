@@ -14,10 +14,15 @@ func _ready():
 func _on_no_button_down():
 	if(len(cs)==1):
 		cs[0].shake(2, 15, 12)
-	if count < 4:
-		$tween.interpolate_property(self, "global_position", global_position, rndbox(), 0.2, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
-		$tween.start()
+	if count > 100:
+		#$tween.interpolate_property(self, "global_position", global_position, rndbox(), 0.2, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
+		#$tween.start()
+		pass
+		
 	elif count < 8:
+		var s = get_node("s" + str(2))
+		s.pitch_scale = rand_range(0.9, 1.1)
+		s.play()
 		$tween.interpolate_method(self, "move_window", OS.window_position, rnd(), 0.2, Tween.TRANS_ELASTIC, Tween.EASE_IN_OUT)
 		$tween.start()
 	else:

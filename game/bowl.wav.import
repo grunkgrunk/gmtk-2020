@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bowl.wav-52ef9bb859ff3dd8e84e6321c569c9c3.sample"
+
+[deps]
+
+source_file="res://bowl.wav"
+dest_files=[ "res://.import/bowl.wav-52ef9bb859ff3dd8e84e6321c569c9c3.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

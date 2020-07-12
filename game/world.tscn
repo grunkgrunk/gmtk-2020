@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://start.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://topdown.png" type="Texture" id=5]
 [ext_resource path="res://mainGame.tscn" type="PackedScene" id=6]
 [ext_resource path="res://debug.gd" type="Script" id=7]
+[ext_resource path="res://pixel-tank.png" type="Texture" id=8]
 
 [node name="world" type="Node2D"]
 position = Vector2( 11.8921, 0 )
@@ -40,9 +41,15 @@ __meta__ = {
 
 [node name="start" parent="ui_layer/ui" instance=ExtResource( 2 )]
 
-[node name="topdown" type="Sprite" parent="."]
-visible = false
+[node name="1234" type="Sprite" parent="."]
+modulate = Color( 0.415686, 0.00392157, 0.00392157, 1 )
 position = Vector2( 477.49, 317.696 )
 texture = ExtResource( 5 )
+
+[node name="topdown" type="Sprite" parent="."]
+visible = false
+position = Vector2( 510.398, 405.144 )
+scale = Vector2( 10, 10 )
+texture = ExtResource( 8 )
 [connection signal="play" from="ui_layer/tut" to="." method="_on_tut_play"]
 [connection signal="start_pressed" from="ui_layer/ui/start" to="ui_layer/tut" method="_on_start_start_pressed"]

@@ -9,7 +9,7 @@
 [ext_resource path="res://chord2.wav" type="AudioStream" id=7]
 [ext_resource path="res://chord4.wav" type="AudioStream" id=8]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 radius = 41.4891
 
 [node name="fireball" type="Node2D" groups=[
@@ -21,7 +21,7 @@ script = ExtResource( 2 )
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
 [node name="fire" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

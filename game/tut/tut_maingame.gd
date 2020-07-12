@@ -13,15 +13,12 @@ export(NodePath) var mainGamePath
 export(NodePath) var spawnDoubleJumpPath
 export(NodePath) var player
 export(NodePath) var bluePath
+export(NodePath) var dragonPath
 export(PackedScene) var musicscn
 export(PackedScene) var yesno
 export(PackedScene) var iloveyou
 export(PackedScene) var cursor_scn
 
-var c = 0
-var maxlook = 10
-onready var startpos = $tut.global_position
-onready var eyes = ["tuteye","tuteye2"]
 onready var mainGame = get_node(mainGamePath)
 var musicjoke = null
 
@@ -171,13 +168,13 @@ func _on_donejump_area_donejump():
 	yield(self, "enter_pressed")
 	t("It has actually been a long time since I have seen anyone...")
 	yield(self, "enter_pressed")
-	t("The indiepocalypse is real. Noone is playing these delightful Schrunkin-games anymore")
+	t("The indiepocalypse is real. Noone is playing these delightful indie-games anymore")
 	yield(self, "enter_pressed")
 	t("But look at me blathering on. I have so much left to teach you!")
 	yield(self, "enter_pressed")
 	t("Your next lesson comes here:")
 	yield(self, "enter_pressed")
-	t("'To continue moving to the right, continue pressing the 'move right'-button!'")
+	t("To continue moving to the right, continue pressing the 'move right'-button!")
 	yield(self, "enter_pressed")
 	mainGame.play()
 	hide()
@@ -240,7 +237,7 @@ func _on_break_area_breakdialogue():
 	yield(self, "enter_pressed")
 	t("This is not relaxing at all!")
 	yield(self, "enter_pressed")
-	t("Let me try resting your eyes like this:")
+	t("Let me try resting your eyes by minimizing your game:")
 	yield(self, "enter_pressed")
 	OS.window_fullscreen = false
 	OS.set_window_minimized(true)
@@ -297,6 +294,7 @@ func _on_spikes_body_entered(body):
 
 func _on_health_almost_dead():
 	show()
+	rect_position = get_parent().get_node("boss_fight_pos").position
 	mainGame.pause()
 	for a in get_tree().get_nodes_in_group("pause"):
 		a.pause()
@@ -315,24 +313,25 @@ func _on_health_almost_dead():
 	t("Secondly you just poke the dragon in the eye")
 	yield(c, "win")
 	t("Yaay, you win! The dragon is dead now!")
+	get_node(dragonPath).kill()
 	yield(self, "enter_pressed")
-	
-func _process(delta):
-	c += delta
-	$tut.position = startpos + Vector2(0,sin(c*2)*3)
-	
-	var c = get_tree().get_nodes_in_group("cursor")
-	var r = randf() > 0.993
-	for estr in eyes:
-		var e = get_node(estr)
-		var tween = e.get_node("tween")
-		if r:
-			tween.interpolate_property(e,"scale",Vector2(1,1),Vector2(1,0),0.1)
-			tween.start()
-			yield(tween,"tween_completed")
-			tween.interpolate_property(e,"scale",Vector2(1,0),Vector2(1,1),0.1)
-			tween.start()
-		if len(c) > 0:
-			var d = e.get_node("tuteyeblack").global_position - c[0].global_position
-			d = -d/d.length()
-			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
+	t("But there still is a surprise!")
+	yield(self, "enter_pressed")
+	t("The dragon was not the final boss.")
+	yield(self, "enter_pressed")
+	t("Plot twist: I am!!")
+	$crown.show()
+	yield(self, "enter_pressed")
+	t("I will start out by thanking you for playing, I hope you had fun!")
+	yield(self, "enter_pressed")
+	t("It has been a delight to be your tutorial, now that the developers had no control.")
+	yield(self, "enter_pressed")
+	t("I will live happily ever after and you will dissappear from this world.")
+	yield(self, "enter_pressed")
+	t("Tutorial in losing a boss fight:",0.08)
+	yield(self, "enter_pressed")
+	t("To ragequit press the 'close window button' in the top of the window!")
+	yield(self,"enter_pressed")
+	while true:
+		t("There is nothing you can do. I win. Close the game. Rate it 10/10.")
+		yield(self,"enter_pressed")
