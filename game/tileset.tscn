@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gmtk2020.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.1844, 2.73729 )
+
+[node name="tileset" type="Node"]
+
+[node name="gmtk2020" type="Sprite" parent="."]
+position = Vector2( 31.8911, 4.19395 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 552.657, 750.395, 64, 5.377 )
+
+[node name="ground" type="StaticBody2D" parent="gmtk2020"]
+position = Vector2( -31.8911, -4.19395 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gmtk2020/ground"]
+position = Vector2( 31.813, 4.25224 )
+shape = SubResource( 1 )

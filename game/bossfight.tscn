@@ -1,27 +1,28 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://dragon.png" type="Texture" id=1]
+[ext_resource path="res://gmtk2020.png" type="Texture" id=1]
 [ext_resource path="res://dragon.gd" type="Script" id=2]
 [ext_resource path="res://fireball.tscn" type="PackedScene" id=3]
 [ext_resource path="res://fire.tres" type="Animation" id=4]
 [ext_resource path="res://idle.tres" type="Animation" id=5]
 [ext_resource path="res://dragonsound.wav" type="AudioStream" id=6]
+[ext_resource path="res://dragonmusic.wav" type="AudioStream" id=7]
 
 [sub_resource type="ShaderMaterial" id=1]
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=7]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 0, 804, 500, 402 )
+region = Rect2( 0, 1500, 500, 500 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=8]
 flags = 4
 atlas = ExtResource( 1 )
-region = Rect2( 500, 804, 500, 402 )
+region = Rect2( 500, 1500, 500, 500 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ SubResource( 2 ), SubResource( 3 ) ],
+"frames": [ SubResource( 7 ), SubResource( 8 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -94,7 +95,7 @@ radius = 159.752
 material = SubResource( 1 )
 position = Vector2( 1351.26, 220.294 )
 rotation = -0.673477
-frames = SubResource( 4 )
+frames = SubResource( 9 )
 script = ExtResource( 2 )
 fireball_scene = ExtResource( 3 )
 
@@ -102,7 +103,7 @@ fireball_scene = ExtResource( 3 )
 wait_time = 0.2
 
 [node name="pos" type="Position2D" parent="dragon"]
-position = Vector2( -118.794, 39.598 )
+position = Vector2( -99.5238, -35.8584 )
 
 [node name="animation" type="AnimationPlayer" parent="dragon"]
 playback_speed = 0.5
@@ -125,8 +126,12 @@ position = Vector2( -121.493, 7.96222 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dragon/eye"]
 shape = SubResource( 6 )
 
+[node name="music" type="AudioStreamPlayer" parent="dragon"]
+stream = ExtResource( 7 )
+volume_db = -13.126
+
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 775.864, 336.019 )
+position = Vector2( 748.864, 268.019 )
 [connection signal="timeout" from="dragon/shoot_timer" to="dragon" method="_on_shoot_timer_timeout"]
 [connection signal="animation_finished" from="dragon/animation" to="dragon" method="_on_animation_animation_finished"]
 [connection signal="timeout" from="dragon/idle_timer" to="dragon" method="_on_idle_timer_timeout"]

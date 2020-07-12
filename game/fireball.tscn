@@ -1,38 +1,63 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://orange_fireball.png" type="Texture" id=1]
+[ext_resource path="res://gmtk2020.png" type="Texture" id=1]
 [ext_resource path="res://fireball.gd" type="Script" id=2]
-
-[sub_resource type="AtlasTexture" id=1]
-atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 32, 32 )
-
-[sub_resource type="AtlasTexture" id=2]
-atlas = ExtResource( 1 )
-region = Rect2( 32, 0, 32, 32 )
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
+[ext_resource path="res://fireball.wav" type="AudioStream" id=3]
+[ext_resource path="res://fireball_destroy.wav" type="AudioStream" id=4]
+[ext_resource path="res://chord1.wav" type="AudioStream" id=5]
+[ext_resource path="res://chord3.wav" type="AudioStream" id=6]
+[ext_resource path="res://chord2.wav" type="AudioStream" id=7]
+[ext_resource path="res://chord4.wav" type="AudioStream" id=8]
 
 [sub_resource type="CircleShape2D" id=4]
+radius = 41.4891
 
-[node name="fireball" type="AnimatedSprite" groups=[
+[node name="fireball" type="Node2D" groups=[
 "fireball",
 "pause",
 ]]
-scale = Vector2( 2, 2 )
-frames = SubResource( 3 )
-frame = 1
-playing = true
 script = ExtResource( 2 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 4 )
+
+[node name="fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -5.049
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="hit_player_1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="hit_player_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="hit_player_3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="hit_player_4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="one" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.489795, 0.489795 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( -3.74683, 1247.9, 172.767, 142.839 )
+
+[node name="two" type="Sprite" parent="."]
+scale = Vector2( 0.522478, 0.522478 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 178.948, 1246.84, 180, 143.158 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="finished" from="hit" to="." method="_on_hit_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

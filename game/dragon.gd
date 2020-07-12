@@ -28,10 +28,13 @@ func _on_shoot_timer_timeout():
 		n_fireballs = 13
 
 func _on_animation_animation_finished(anim_name):
+	if paused:
+		return
 	if anim_name == "intro":
 		$animation.play("idle")
 		$idle_timer.wait_time = rand_range(2, 3)
 		$idle_timer.start()
+		$music.play()
 	if anim_name == "fire":
 		$idle_timer.wait_time = rand_range(2, 3)
 		$idle_timer.start()

@@ -3,11 +3,12 @@
 [ext_resource path="res://tut/underworld.wav" type="AudioStream" id=1]
 [ext_resource path="res://tut/tut.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tut/tutmusic.gd" type="Script" id=3]
-[ext_resource path="res://tut/take5.wav" type="AudioStream" id=4]
-[ext_resource path="res://tut/baroque.wav" type="AudioStream" id=5]
-[ext_resource path="res://tut/techno.wav" type="AudioStream" id=6]
 [ext_resource path="res://tut/dialog.png" type="Texture" id=7]
 [ext_resource path="res://blackround.tscn" type="PackedScene" id=8]
+[ext_resource path="res://take5.wav" type="AudioStream" id=4]
+[ext_resource path="res://baroque.wav" type="AudioStream" id=5]
+[ext_resource path="res://techno.wav" type="AudioStream" id=6]
+
 
 [node name="musicmenu" type="Control"]
 anchor_right = 1.0

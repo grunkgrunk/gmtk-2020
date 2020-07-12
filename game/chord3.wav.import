@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/chord3.wav-149bdcec2f5b5eb392547f9b40d9ef75.sample"
+
+[deps]
+
+source_file="res://chord3.wav"
+dest_files=[ "res://.import/chord3.wav-149bdcec2f5b5eb392547f9b40d9ef75.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

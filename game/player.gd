@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal took_damage
 const MOVE_SPEED = 300
-const JUMP_FORCE = 600
+const JUMP_FORCE = 700
 const GRAVITY = 50
 const MAX_FALL_SPEED = 1000
 
@@ -70,4 +70,5 @@ func flip():
 
 func _on_djump_area_area_entered(area):
 	if area.owner.is_in_group("fireball"):
+		print("yo")
 		emit_signal("took_damage")

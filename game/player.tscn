@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://gmtk2020.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 22.1006
+height = 39.1205
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 29.8667, 46.5116 )
+
+[node name="player" type="KinematicBody2D" groups=[
+"player",
+]]
+position = Vector2( 584.551, 263.281 )
+script = ExtResource( 1 )
+playing = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0.224971, -117.958 )
+current = true
+zoom = Vector2( 0.7, 0.7 )
+smoothing_enabled = true
+smoothing_speed = 10.0
+drag_margin_left = 1.0
+drag_margin_top = 1.0
+drag_margin_right = 1.0
+drag_margin_bottom = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.781921, -17.0471 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -1.78381, -17.8381 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 29.75, 518.75, 189, 225 )
+
+[node name="djump_area" type="Area2D" parent="."]
+position = Vector2( 1.18921, -12.4867 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="djump_area"]
+position = Vector2( -3.56763, -2.94947 )
+shape = SubResource( 2 )
+[connection signal="area_entered" from="djump_area" to="." method="_on_djump_area_area_entered"]

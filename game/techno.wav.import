@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/techno.wav-1b14756e888b3a810bcf89f88beb1e5a.sample"
+
+[deps]
+
+source_file="res://techno.wav"
+dest_files=[ "res://.import/techno.wav-1b14756e888b3a810bcf89f88beb1e5a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
