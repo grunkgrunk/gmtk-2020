@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Node2D
 
 
 # Declare member variables here. Examples:
@@ -12,7 +12,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
 	position = get_global_mouse_position()
 
 func left():
@@ -20,8 +20,6 @@ func left():
 
 func _input(event):
 	if event.is_action_pressed("left_click"):
-		print("yir")
 		for a in $Area2D.get_overlapping_areas():
 			if a.is_in_group("eye"):
-				print("poked")
 				emit_signal("win")

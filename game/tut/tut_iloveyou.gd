@@ -5,6 +5,8 @@ signal line_edit
 signal iloveyouwasajoke
 
 export(NodePath) var dialog_path
+export(PackedScene) var cursor_scn
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	iloveyou()
@@ -35,21 +37,24 @@ func iloveyou():
 	yield(self, "enter_pressed")
 	t("I don't even expect you to give me anything in return that is how good of a guy I am.")
 	yield(self, "enter_pressed")
+	var c = cursor_scn.instance()
+	var dia = get_node(dialog_path)
+	get_parent().add_child(c)
 	t("Now, write 'thank you' in the dialog box")
-	get_node(dialog_path).show()
-
+	dia.show()
 	while true:
 		var response = yield(self, "line_edit")
 		if response == "thank you":
 			break
 		t("Did you just call me" + response + "?. Say 'thank you'")
-	
+	dia.hide()
+	dia.text = ""
 	t("Ohh you are too sweet, no problem!")
 	yield(self, "enter_pressed")
 	t("I love you")
 	yield(self, "enter_pressed")
 	t("Now say: 'i love you too'")
-	get_node(dialog_path).text = ""
+	dia.show()
 	yield(self, "enter_pressed")
 
 	while true:
@@ -57,6 +62,8 @@ func iloveyou():
 		if response == "i love you too":
 			break
 		t("Be kind, I know you can! Say 'i love you too'.")
+	c.queue_free()
+	dia.hide()
 	t("Hahahahah")
 	yield(self, "enter_pressed")
 	t("I never loved you, it was a joke")

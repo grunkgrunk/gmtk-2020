@@ -94,7 +94,7 @@ shape = SubResource( 1 )
 [node name="player" type="KinematicBody2D" parent="." groups=[
 "player",
 ]]
-position = Vector2( 5811.65, 2027.82 )
+position = Vector2( 6070.61, 2041.17 )
 script = ExtResource( 3 )
 playing = true
 
@@ -246,7 +246,7 @@ position = Vector2( -21.3813, -19.5999 )
 shape = SubResource( 13 )
 
 [node name="bossfight" parent="." instance=ExtResource( 26 )]
-position = Vector2( 5728.1, 1654.66 )
+position = Vector2( 5712.08, 1686.7 )
 script = ExtResource( 27 )
 mainGamePath = NodePath("..")
 healthPath = NodePath("../layer/health")
@@ -271,5 +271,6 @@ healthPath = NodePath("../layer/health")
 [connection signal="breakdialogue" from="break_area" to="layer/tut" method="_on_break_area_breakdialogue"]
 [connection signal="body_entered" from="turnoffmusic_area" to="layer/tut" method="_on_turnoffmusic_area_body_entered"]
 [connection signal="body_entered" from="spikes" to="layer/tut" method="_on_spikes_body_entered"]
+[connection signal="body_entered" from="spikes" to="spikes" method="_on_spikes_body_entered"]
 [connection signal="body_entered" from="dragon_area" to="bossfight" method="_on_dragon_area_body_entered"]
 [connection signal="body_entered" from="dragon_area" to="dragon_area" method="_on_dragon_area_body_entered"]

@@ -247,11 +247,13 @@ func _on_turnoffmusic_area_body_entered(body):
 func _on_spikes_body_entered(body):
 	if not body.is_in_group("player"):
 		return
+	body.y_velo = -100
 	var o = iloveyou.instance()
 	mainGame.pause()
 	hide()
 	get_parent().add_child(o)
 	yield(o.get_node("tut"), "iloveyouwasajoke")
+	o.queue_free()
 	mainGame.play()
 
 func _on_health_almost_dead():

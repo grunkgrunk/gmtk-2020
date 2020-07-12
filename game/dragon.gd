@@ -7,7 +7,7 @@ var paused = false
 
 func pause():
 	paused = true
-	$animation.stop(false)
+	$animation.queue_free()
 func resume():
 	paused = false
 	$animation.play()
