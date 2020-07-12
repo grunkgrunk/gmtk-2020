@@ -1,6 +1,8 @@
 extends Control
 
 export(NodePath) var topdown_path
+export(NodePath) var start
+export(NodePath) var background
 export(PackedScene) var mainGameScene
 onready var topdown = get_node(topdown_path)
 signal enter_pressed
@@ -52,6 +54,9 @@ func intro():
 	t("Let's go on an adventure instead!")
 	yield(self,"enter_pressed")
 	topdown.queue_free()
+	get_node(start).queue_free()
+	get_node(background).queue_free()
+	
 	emit_signal("play")
 	var g  = mainGameScene.instance()
 	g.get_node("player/Camera2D").current = true

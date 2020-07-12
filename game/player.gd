@@ -38,7 +38,7 @@ func _physics_process(delta):
 		play_anim("jump")
 		$jump.play()
 	if grounded and y_velo >= 0:
-		y_velo = 1
+		y_velo = 5
 	if y_velo > MAX_FALL_SPEED:
 		y_velo = MAX_FALL_SPEED
 	
@@ -77,7 +77,6 @@ func play_anim(anim_name):
 	if anim_player.is_playing() and anim_player.current_animation == anim_name:
 		return
 	anim_player.play(anim_name)
-
 
 func _on_djump_area_area_entered(area):
 	if area.owner.is_in_group("fireball"):

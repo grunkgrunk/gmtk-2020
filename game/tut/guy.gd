@@ -12,15 +12,20 @@ func _process(delta):
 	var p = get_tree().get_nodes_in_group("player")
 	for estr in eyes:
 		var e = get_node(estr)
-		
-		if len(c) > 0:
-			var d = e.get_node("tuteyeblack").global_position - c[0].global_position
+		if len(c) > 10:
+			var tuteye = e.get_node("tuteyeblack")
+			var a = tuteye.get_global_transform_with_canvas().origin
+			var b = c[0].get_global_transform_with_canvas().origin
+			var d = a - b
 			d = -d/d.length()
 			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
-		#elif len(p) > 0:
-	#		var d = e.get_node("tuteyeblack").global_position - p[0].global_position
-	#		d = -d/d.length()
-	#		e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
+		elif len(p) > 10:
+			var tuteye = e.get_node("tuteyeblack")
+			var a = tuteye.get_global_transform_with_canvas().origin
+			var b = p.get_global_transform_with_canvas().origin
+			var d = a - b
+			d = -d/d.length()
+			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
 
 func _on_Timer_timeout():
 	var t = $tween

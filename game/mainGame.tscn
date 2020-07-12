@@ -94,7 +94,7 @@ position = Vector2( -5.79126, 0 )
 shape = SubResource( 1 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 21.8107, 470.305 )
+position = Vector2( 6568.12, 2396.71 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 3 )
@@ -143,6 +143,7 @@ scale = Vector2( 0.161596, 0.161596 )
 texture = ExtResource( 29 )
 
 [node name="health" type="ProgressBar" parent="layer"]
+visible = false
 margin_left = 98.0
 margin_top = 511.0
 margin_right = 899.0
@@ -244,7 +245,7 @@ position = Vector2( 6403.59, 2378.87 )
 script = ExtResource( 25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dragon_area"]
-position = Vector2( 89.7427, 155.504 )
+position = Vector2( 266.738, 142.011 )
 shape = SubResource( 11 )
 
 [node name="bossfight" parent="." instance=ExtResource( 26 )]
@@ -256,7 +257,7 @@ healthPath = NodePath("../layer/health")
 script = ExtResource( 14 )
 
 [node name="Line2D" type="Line2D" parent="ground"]
-points = PoolVector2Array( -62.5746, 282.493, -67.3314, 534.605, 76.234, 528.248, 198.446, 537.067, 330.738, 534.547, 441.611, 525.728, 573.903, 533.287, 600.361, 530.767, 597.841, 465.252, 673.437, 472.811, 738.952, 469.031, 805.993, 531.757, 934.427, 535.325, 935.616, 707.76, 1105.67, 718.463, 1097.35, 511.541, 1093.16, 397.402, 1164.97, 407.481, 1192.69, 404.962, 1186.31, 626.708, 1522.71, 619.148, 1706.65, 615.368, 1881.78, 620.408, 2009.04, 625.448, 2113.61, 616.628, 2384.99, 616.68, 2749.84, 614.467, 3052.22, 629.586, 3457.92, 627.066, 3838.41, 634.626, 4513.6, 628.131, 4520.73, 564.619, 4719.66, 528.698, 4913.69, 528.698, 4979.21, 526.178, 5022.04, 523.659, 4986.34, 2281.53, 4979.99, 2444.68, 5378.18, 2446.91, 5576.17, 2429.94, 5709.11, 2441.26, 5833.56, 2390.35, 6227.51, 2401.48, 6226.57, 2460.94, 6231.29, 2518.52, 6233.17, 2544, 6529.72, 2523.72, 6707.51, 2536.42, 6697.98, 2355.46, 6939.27, 2272.92, 7158.33, 1958.61, 7104.4, 684.088, 6888.27, 451.006, 6100.03, 497.623, 5545.25, 496.702, 5538.13, 1034.81, 5527.44, 1216.55, 5545.25, 1451.75, 5520.31, 1708.32, 5506.05, 1886.5, 5509.62, 2121.7, 5737.69, 2111.01, 5972.88, 2118.14, 5980.01, 1722.58, 5983.58, 1405.42 )
+points = PoolVector2Array( -62.5746, 282.493, -67.3314, 534.605, 76.234, 528.248, 198.446, 537.067, 330.738, 534.547, 441.611, 525.728, 573.903, 533.287, 600.361, 530.767, 597.841, 465.252, 673.437, 472.811, 738.952, 469.031, 805.993, 531.757, 934.427, 535.325, 935.616, 707.76, 1105.67, 718.463, 1097.35, 511.541, 1093.16, 397.402, 1164.97, 407.481, 1192.69, 404.962, 1186.31, 626.708, 1522.71, 619.148, 1706.65, 615.368, 1881.78, 620.408, 2009.04, 625.448, 2113.61, 616.628, 2384.99, 616.68, 2749.84, 614.467, 3052.22, 629.586, 3457.92, 627.066, 3838.41, 634.626, 4513.6, 628.131, 4520.73, 564.619, 4719.66, 528.698, 4913.69, 528.698, 4979.21, 526.178, 5022.04, 523.659, 4986.34, 2281.53, 4979.99, 2444.68, 5378.18, 2446.91, 5576.17, 2429.94, 5709.11, 2441.26, 5833.56, 2390.35, 6422.71, 2382, 6423.51, 2466.92, 6421.92, 2498.67, 6423.51, 2527.25, 6529.72, 2523.72, 6707.51, 2536.42, 6704.82, 2421.77, 6976.62, 2411.9, 7158.33, 1958.61, 7104.4, 684.088, 6888.27, 451.006, 6100.03, 497.623, 5545.25, 496.702, 5538.13, 1034.81, 5527.44, 1216.55, 5545.25, 1451.75, 5520.31, 1708.32, 5506.05, 1886.5, 5509.62, 2121.7, 5737.69, 2111.01, 5972.88, 2118.14, 5980.01, 1722.58, 5983.58, 1405.42 )
 default_color = Color( 0.976471, 0.835294, 0.431373, 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ground"]
@@ -281,5 +282,5 @@ build_mode = 1
 [connection signal="body_entered" from="turnoffmusic_area" to="layer/tut" method="_on_turnoffmusic_area_body_entered"]
 [connection signal="body_entered" from="spikes" to="spikes" method="_on_spikes_body_entered"]
 [connection signal="body_entered" from="spikes" to="layer/tut" method="_on_spikes_body_entered"]
-[connection signal="body_entered" from="dragon_area" to="bossfight" method="_on_dragon_area_body_entered"]
 [connection signal="body_entered" from="dragon_area" to="dragon_area" method="_on_dragon_area_body_entered"]
+[connection signal="body_entered" from="dragon_area" to="bossfight" method="_on_dragon_area_body_entered"]

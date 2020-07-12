@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://start.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://tut/tut.tscn" type="PackedScene" id=4]
 [ext_resource path="res://topdown.png" type="Texture" id=5]
 [ext_resource path="res://mainGame.tscn" type="PackedScene" id=6]
-[ext_resource path="res://debug.gd" type="Script" id=7]
 [ext_resource path="res://pixel-tank.png" type="Texture" id=8]
 
 [node name="world" type="Node2D"]
@@ -15,20 +14,14 @@ script = ExtResource( 3 )
 
 [node name="ui_layer" type="CanvasLayer" parent="."]
 
-[node name="debug" type="Label" parent="ui_layer"]
-margin_right = 40.0
-margin_bottom = 14.0
-script = ExtResource( 7 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="tut" parent="ui_layer" instance=ExtResource( 4 )]
 margin_left = -1116.62
 margin_top = 219.955
 margin_right = -1116.62
 margin_bottom = 219.955
 topdown_path = NodePath("../../topdown")
+start = NodePath("../ui/start")
+background = NodePath("../../1234")
 mainGameScene = ExtResource( 6 )
 cursor_scn = ExtResource( 1 )
 

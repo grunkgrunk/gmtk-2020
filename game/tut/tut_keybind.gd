@@ -50,7 +50,8 @@ func _ready():
 		grid.get_node(k.curkey + "_bind").text = "_"
 		yield(self, "correct_key_bound")
 		grid.get_node(k.curkey + "_bind").text = k.newkey
-	t("Sorry but you are taking waay too long, let me just fill out the rest of the keybindings with some accessibility friendly ones for you")
+	t("Sorry but you are taking waay too long, let me just fill out the rest of the keybindings with some accessibility friendly ones for you (Press enter to let me help you)")
+	yield(self, "enter_pressed")
 	t("...")
 	$bindtimer.start()
 	for k in missing_actions:
