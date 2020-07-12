@@ -8,6 +8,10 @@ var donetalking = true
 export(NodePath) var dialog_path
 export(PackedScene) var cursor_scn
 
+var c = 0
+var maxlook = 10
+onready var startpos = $tut.global_position
+onready var eyes = ["tuteye","tuteye2"]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	iloveyou()
@@ -87,4 +91,23 @@ func iloveyou():
 	emit_signal("iloveyouwasajoke")
 	
 
+func _process(delta):
+	c += delta
+	$tut.position = startpos + Vector2(0,sin(c*2)*3)
 	
+	var c = get_tree().get_nodes_in_group("cursor")
+	var r = randf() > 0.993
+	for estr in eyes:
+		var e = get_node(estr)
+		var tween = e.get_node("tween")
+		if r:
+			tween.interpolate_property(e,"scale",Vector2(1,1),Vector2(1,0),0.1)
+			tween.start()
+			yield(tween,"tween_completed")
+			tween.interpolate_property(e,"scale",Vector2(1,0),Vector2(1,1),0.1)
+			tween.start()
+		if len(c) > 0:
+			var d = e.get_node("tuteyeblack").global_position - c[0].global_position
+			d = -d/d.length()
+			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
+

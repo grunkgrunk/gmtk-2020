@@ -11,6 +11,10 @@ export(NodePath) var rebindPath
 export(NodePath) var loadLabelPath
 export(PackedScene) var cursorscn
 
+var c = 0
+var maxlook = 10
+onready var startpos = $tut.global_position
+onready var eyes = ["tuteye","tuteye2"]
 onready var grid = get_node(gridPath)
 var donetalking = true
 
@@ -102,3 +106,24 @@ func _on_rebind_pressed():
 
 func _on_timer_timeout():
 	emit_signal("timeout")
+
+func _process(delta):
+	c += delta
+	$tut.position = startpos + Vector2(0,sin(c*2)*3)
+	
+	var c = get_tree().get_nodes_in_group("cursor")
+	var r = randf() > 0.993
+	for estr in eyes:
+		var e = get_node(estr)
+		var tween = e.get_node("tween")
+		if r:
+			tween.interpolate_property(e,"scale",Vector2(1,1),Vector2(1,0),0.1)
+			tween.start()
+			yield(tween,"tween_completed")
+			tween.interpolate_property(e,"scale",Vector2(1,0),Vector2(1,1),0.1)
+			tween.start()
+		if len(c) > 0:
+			var d = e.get_node("tuteyeblack").global_position - c[0].global_position
+			d = -d/d.length()
+			e.get_node("tuteyeblack").global_position = e.global_position + d*maxlook
+
